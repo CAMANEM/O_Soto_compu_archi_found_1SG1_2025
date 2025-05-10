@@ -1,0 +1,1 @@
+# O_Soto_compu_archi_found_1SG1_2025
