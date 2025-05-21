@@ -13,11 +13,3 @@ state.START_BIT 0 0 1 1 0
 state.DATA_BITS 0 1 0 1 0 
 state.STOP_BIT 1 0 0 1 0 
 state.CLEANUP 0 0 0 1 1 
-
-State Machine - |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst|state
-Name state.STOP_BIT state.DATA_BITS state.START_BIT state.IDLE state.DONE 
-state.IDLE 0 0 0 0 0 
-state.START_BIT 0 0 1 1 0 
-state.DATA_BITS 0 1 0 1 0 
-state.STOP_BIT 1 0 0 1 0 
-state.DONE 0 0 0 1 1 

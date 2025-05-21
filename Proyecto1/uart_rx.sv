@@ -1,126 +1,126 @@
-/**
- * @module uart_rx
- * @brief UART receiver module for asynchronous serial communication.
- *
- * This module implements a UART receiver that listens to the `rx` line
- * and receives an 8-bit data frame using standard UART format (1 start bit, 
- * 8 data bits, 1 stop bit).
- *
- * @param CLOCK_FREQ Clock frequency of the system in Hz (default: 50 MHz)
- * @param BAUD_RATE  UART communication baud rate (default: 9600)
- *
- * @input clk     System clock input
- * @input reset   Active-high synchronous reset
- * @input rx      UART receive line
- * @output data   8-bit data received
- * @output ready  High for one clock cycle when a full byte is received
- */
 module uart_rx #(
-    parameter CLOCK_FREQ = 50_000_000, ///< Clock frequency in Hz
-    parameter BAUD_RATE = 9600         ///< UART baud rate
+    parameter CLOCK_FREQ = 50_000_000,
+    parameter BAUD_RATE = 9600
 )(
-    input  logic clk,                  ///< System clock
-    input  logic reset,                ///< Synchronous reset
-    input  logic rx,                   ///< UART receive input
-    output logic [7:0] data,           ///< Output received 8-bit data
-    output logic ready                 ///< High when data is valid
+    input  logic clk,
+    input  logic reset,
+    input  logic rx,
+    output logic [7:0] data,
+    output logic ready
 );
 
-    /// Clock cycles per UART bit
     localparam integer CLKS_PER_BIT = CLOCK_FREQ / BAUD_RATE;
-
-    /// Midpoint of a bit for start bit sampling
     localparam integer MID_SAMPLE = CLKS_PER_BIT / 2;
 
-    /**
-     * @enum state_t
-     * @brief State machine for UART reception
-     */
     typedef enum logic [2:0] {
-        IDLE,        ///< Waiting for start bit
-        START_BIT,   ///< Sampling the start bit
-        DATA_BITS,   ///< Receiving the 8 data bits
-        STOP_BIT,    ///< Receiving the stop bit
-        DONE         ///< Reception complete
+        IDLE, START_BIT, DATA_BITS, STOP_BIT, DONE
     } state_t;
 
-    state_t state = IDLE; ///< FSM current state
-    logic [$clog2(CLKS_PER_BIT)-1:0] clk_count = 0; ///< Baud timing counter
-    logic [2:0] bit_index = 0;                      ///< Index of current bit being received
-    logic [7:0] rx_data = 0;                        ///< Register to store incoming data
-    logic rx_sync = 1;                              ///< Synchronized rx signal
+    logic [$clog2(CLKS_PER_BIT)-1:0] clk_count, clk_count_next;
+    logic [2:0] bit_index, bit_index_next;
+    logic [7:0] rx_data, rx_data_next;
+    logic [2:0] state, state_next;
+    logic rx_sync, rx_sync_next;
+    logic ready_next;
+    logic [7:0] data_next;
+    logic clk_countCMPclks_per_bit, clk_countCMPmid_sample;
+    logic stateCMPIDLE, stateCMPSTART_BIT, stateCMPDATA_BITS, stateCMPSTOP_BIT, stateCMPDONE, bit_indexCMP7;
 
-    /**
-     * @brief Simple 1-stage synchronizer for asynchronous `rx` input
-     */
-    always_ff @(posedge clk) begin
-        rx_sync <= rx;
-    end
+    // Sincronizador
+    always_ff @(posedge clk) rx_sync <= rx;
 
-    /**
-     * @brief UART receiver FSM for decoding incoming serial data.
-     *
-     * Waits for a falling edge on `rx_sync`, samples the bits at the correct intervals,
-     * and outputs the complete byte when reception is complete.
-     */
+    // Comparadores
+    assign clk_countCMPclks_per_bit = ~| (clk_count ^ (CLKS_PER_BIT - 1));
+    assign clk_countCMPmid_sample   = ~|(clk_count ^ (MID_SAMPLE-1));
+    assign stateCMPIDLE = ~| (state ^ IDLE);
+    assign stateCMPSTART_BIT = ~| (state ^ START_BIT);
+    assign stateCMPDATA_BITS = ~| (state ^ DATA_BITS);
+    assign stateCMPSTOP_BIT = ~| (state ^ STOP_BIT);
+    assign stateCMPDONE = ~| (state ^ DONE);
+    assign bit_indexCMP7 = ~| (bit_index ^ 3'd7);
+
+
+        // Defaults
+        /*
+        state_next = state;
+        clk_count_next = clk_count;
+        bit_index_next = bit_index;
+        rx_data_next = rx_data;
+        data_next = data;
+        ready_next = 1'b0;
+        ready_next = 1'b0;
+        */
+
+
+
+
+/*
+        assign state_next = (stateCMPIDLE && ~rx_sync) ? START_BIT :
+                     (stateCMPSTART_BIT && clk_countCMPmid_sample) ? DATA_BITS :
+                     (stateCMPDATA_BITS && clk_countCMPclks_per_bit && bit_indexCMP7) ? STOP_BIT :
+                     (stateCMPDATA_BITS && clk_countCMPclks_per_bit && ~bit_indexCMP7) ? DATA_BITS :
+                     (stateCMPSTOP_BIT && clk_countCMPclks_per_bit) ? DONE :
+                     (stateCMPDONE) ? IDLE : state;
+*/      
+ 
+        assign state_next[2] = ~state[2] & state[1] & state[0] & clk_countCMPclks_per_bit;
+
+        assign state_next[1] = (~state[2]&~state[1]&state[0]&clk_countCMPmid_sample)|
+                               (~state[2]&state[1]&~state[0]&clk_countCMPclks_per_bit&bit_indexCMP7)|
+                               (~state[2]&state[1]&~state[0]&clk_countCMPclks_per_bit&~bit_indexCMP7)|
+                               (~state[2]&state[1]&~state[0]&~clk_countCMPclks_per_bit)|
+                               (~state[2]&state[1]&state[0]&~clk_countCMPclks_per_bit);
+
+        assign state_next[0] = (~state[2]&~state[1]&~state[0]&~rx_sync)|
+                               (~state[2]&~state[1]&state[0]&~clk_countCMPmid_sample)|
+                               (~state[2]&state[1]&~state[0]&clk_countCMPclks_per_bit&bit_indexCMP7)|
+                               (~state[2]&state[1]&state[0]&~clk_countCMPclks_per_bit);
+
+
+
+        // clk_count_next
+        assign clk_count_next = (reset) ? 0 :
+                         ((state == IDLE && ~rx_sync) ? 0 :
+                         (state == START_BIT && clk_countCMPmid_sample) ? 0 :
+                         (state == DATA_BITS && clk_countCMPclks_per_bit) ? 0 :
+                         (state == STOP_BIT && clk_countCMPclks_per_bit) ? 0 :
+                         (state == IDLE) ? clk_count :
+                         clk_count + 1);
+
+        // bit_index_next
+        assign bit_index_next = (reset) ? 0 :
+                         (state == START_BIT && clk_countCMPmid_sample) ? 0 :
+                         (state == DATA_BITS && clk_countCMPclks_per_bit && bit_index != 3'd7) ? bit_index + 1 :
+                         (state == DATA_BITS && clk_countCMPclks_per_bit && bit_index == 3'd7) ? bit_index :
+                         (state == STOP_BIT && clk_countCMPclks_per_bit) ? 0 :
+                         bit_index;
+        // rx_data_next
+        assign rx_data_next = (reset) ? 0 :
+                       (state == DATA_BITS && clk_countCMPclks_per_bit) ? {rx_sync, rx_data[7:1]} : rx_data;
+
+        // data_next
+        assign data_next = (state == DONE) ? rx_data : data;
+
+        // ready_next
+        assign ready_next = ~|(state ^ DONE);
+        //(state == DONE);
+
+
     always_ff @(posedge clk or posedge reset) begin
         if (reset) begin
             state <= IDLE;
             clk_count <= 0;
             bit_index <= 0;
+            rx_data <= 0;
             data <= 0;
             ready <= 0;
         end else begin
-            ready <= 0;
-
-            case (state)
-                IDLE: begin
-                    if (rx_sync == 0) begin // Detected start bit
-                        state <= START_BIT;
-                        clk_count <= 0;
-                    end
-                end
-
-                START_BIT: begin
-                    if (clk_count == MID_SAMPLE) begin
-                        clk_count <= 0;
-                        state <= DATA_BITS;
-                        bit_index <= 0;
-                    end else begin
-                        clk_count <= clk_count + 1;
-                    end
-                end
-
-                DATA_BITS: begin
-                    if (clk_count == CLKS_PER_BIT - 1) begin
-                        clk_count <= 0;
-                        rx_data[bit_index] <= rx_sync;
-
-                        if (bit_index == 7) begin
-                            state <= STOP_BIT;
-                        end else begin
-                            bit_index <= bit_index + 1;
-                        end
-                    end else begin
-                        clk_count <= clk_count + 1;
-                    end
-                end
-
-                STOP_BIT: begin
-                    if (clk_count == CLKS_PER_BIT - 1) begin
-                        clk_count <= 0;
-                        state <= DONE;
-                    end else begin
-                        clk_count <= clk_count + 1;
-                    end
-                end
-
-                DONE: begin
-                    data <= rx_data;
-                    ready <= 1;
-                    state <= IDLE;
-                end
-            endcase
+            state <= state_next;
+            clk_count <= clk_count_next;
+            bit_index <= bit_index_next;
+            rx_data <= rx_data_next;
+            data <= data_next;
+            ready <= ready_next;
         end
     end
 
