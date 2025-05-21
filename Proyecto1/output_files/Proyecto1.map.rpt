@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Proyecto1
-Tue May 20 17:58:10 2025
+Tue May 20 20:35:28 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -51,7 +51,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue May 20 17:58:10 2025       ;
+; Analysis & Synthesis Status     ; Successful - Tue May 20 20:35:28 2025       ;
 ; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                   ; Proyecto1                                   ;
 ; Top-level Entity Name           ; main_Top                                    ;
@@ -192,14 +192,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 58        ;
+; Estimate of Logic utilization (ALMs needed) ; 64        ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 90        ;
-;     -- 7 input functions                    ; 3         ;
-;     -- 6 input functions                    ; 18        ;
-;     -- 5 input functions                    ; 12        ;
-;     -- 4 input functions                    ; 8         ;
-;     -- <=3 input functions                  ; 49        ;
+; Combinational ALUT usage for logic          ; 100       ;
+;     -- 7 input functions                    ; 4         ;
+;     -- 6 input functions                    ; 21        ;
+;     -- 5 input functions                    ; 10        ;
+;     -- 4 input functions                    ; 7         ;
+;     -- <=3 input functions                  ; 58        ;
 ;                                             ;           ;
 ; Dedicated logic registers                   ; 81        ;
 ;                                             ;           ;
@@ -209,8 +209,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 81        ;
-; Total fan-out                               ; 657       ;
-; Average fan-out                             ; 3.51      ;
+; Total fan-out                               ; 644       ;
+; Average fan-out                             ; 3.27      ;
 +---------------------------------------------+-----------+
 
 
@@ -219,9 +219,9 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
 ; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Entity Name    ; Library Name ;
 +-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
-; |main_Top                           ; 90 (0)              ; 81 (0)                    ; 0                 ; 0          ; 8    ; 0            ; |main_Top                                                     ; main_Top       ; work         ;
-;    |uartController:uart_controller| ; 90 (11)             ; 81 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller                      ; uartController ; work         ;
-;       |uart_rx:uart_rx_inst|        ; 43 (43)             ; 37 (37)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst ; uart_rx        ; work         ;
+; |main_Top                           ; 100 (1)             ; 81 (0)                    ; 0                 ; 0          ; 8    ; 0            ; |main_Top                                                     ; main_Top       ; work         ;
+;    |uartController:uart_controller| ; 99 (12)             ; 81 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller                      ; uartController ; work         ;
+;       |uart_rx:uart_rx_inst|        ; 51 (51)             ; 37 (37)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst ; uart_rx        ; work         ;
 ;       |uart_tx:uart_tx_inst|        ; 36 (36)             ; 31 (31)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst ; uart_tx        ; work         ;
 +-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -274,11 +274,11 @@ Encoding Type:  One-Hot
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 81    ;
-; Number of registers using Synchronous Clear  ; 26    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 72    ;
+; Number of registers using Synchronous Clear  ; 30    ;
+; Number of registers using Synchronous Load   ; 3     ;
+; Number of registers using Asynchronous Clear ; 36    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 60    ;
+; Number of registers using Clock Enable       ; 50    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -289,7 +289,7 @@ Encoding Type:  One-Hot
 ; Inverted Register                                         ; Fan out ;
 +-----------------------------------------------------------+---------+
 ; uartController:uart_controller|uart_tx:uart_tx_inst|tx    ; 2       ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|ready ; 7       ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|ready ; 6       ;
 ; uartController:uart_controller|tx_data[1]                 ; 1       ;
 ; uartController:uart_controller|tx_data[3]                 ; 1       ;
 ; uartController:uart_controller|tx_data[2]                 ; 1       ;
@@ -302,11 +302,11 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[4]    ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[0]  ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]  ;
-; 7:1                ; 13 bits   ; 52 LEs        ; 0 LEs                ; 52 LEs                 ; Yes        ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11] ;
-; 5:1                ; 13 bits   ; 39 LEs        ; 0 LEs                ; 39 LEs                 ; Yes        ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[11] ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[1]    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[1]  ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[0]  ;
+; 7:1                ; 12 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11] ;
+; 5:1                ; 13 bits   ; 39 LEs        ; 0 LEs                ; 39 LEs                 ; Yes        ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[12] ;
 ; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |main_Top|uartController:uart_controller|Selector1                          ;
 ; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; No         ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst|Selector2     ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst|Selector6     ;
@@ -350,23 +350,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 81                          ;
-;     CLR               ; 20                          ;
-;     ENA               ; 8                           ;
-;     ENA CLR           ; 26                          ;
-;     ENA CLR SCLR      ; 26                          ;
-;     plain             ; 1                           ;
-; arriav_lcell_comb     ; 91                          ;
+;     CLR               ; 13                          ;
+;     ENA               ; 15                          ;
+;     ENA CLR           ; 10                          ;
+;     ENA CLR SCLR      ; 13                          ;
+;     ENA SCLR          ; 12                          ;
+;     SCLR              ; 2                           ;
+;     SCLR SLD          ; 3                           ;
+;     plain             ; 13                          ;
+; arriav_lcell_comb     ; 101                         ;
 ;     arith             ; 26                          ;
 ;         1 data inputs ; 26                          ;
-;     extend            ; 3                           ;
-;         7 data inputs ; 3                           ;
-;     normal            ; 62                          ;
-;         1 data inputs ; 7                           ;
-;         2 data inputs ; 3                           ;
+;     extend            ; 4                           ;
+;         7 data inputs ; 4                           ;
+;     normal            ; 71                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 10                          ;
 ;         3 data inputs ; 14                          ;
-;         4 data inputs ; 8                           ;
-;         5 data inputs ; 12                          ;
-;         6 data inputs ; 18                          ;
+;         4 data inputs ; 7                           ;
+;         5 data inputs ; 10                          ;
+;         6 data inputs ; 21                          ;
 ; boundary_port         ; 8                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.00                        ;
@@ -389,7 +393,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Tue May 20 17:58:01 2025
+    Info: Processing started: Tue May 20 20:35:19 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Proyecto1 -c Proyecto1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -405,17 +409,17 @@ Info (12021): Found 1 design units, including 1 entities, in source file leds_co
     Info (12023): Found entity 1: leds_controller File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/leds_controller.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux2x1_16bit.sv
     Info (12023): Found entity 1: mux2x1_16bit File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/mux2x1_16bit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux2to1_1bit.sv
+    Info (12023): Found entity 1: mux2to1_1bit File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/mux2to1_1bit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux2to1_param.sv
+    Info (12023): Found entity 1: mux2to1_param File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/mux2to1_param.sv Line: 1
 Info (12127): Elaborating entity "main_Top" for the top level hierarchy
 Info (12128): Elaborating entity "uartController" for hierarchy "uartController:uart_controller" File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/main_Top.sv Line: 15
 Info (12128): Elaborating entity "uart_rx" for hierarchy "uartController:uart_controller|uart_rx:uart_rx_inst" File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uartController.sv Line: 52
-Warning (10036): Verilog HDL or VHDL warning at uart_rx.sv(27): object "stateCMPIDLE" assigned a value but never read File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 27
-Warning (10036): Verilog HDL or VHDL warning at uart_rx.sv(27): object "stateCMPSTART_BIT" assigned a value but never read File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 27
-Warning (10036): Verilog HDL or VHDL warning at uart_rx.sv(27): object "stateCMPDATA_BITS" assigned a value but never read File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 27
-Warning (10036): Verilog HDL or VHDL warning at uart_rx.sv(27): object "stateCMPSTOP_BIT" assigned a value but never read File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 27
-Warning (10036): Verilog HDL or VHDL warning at uart_rx.sv(27): object "stateCMPDONE" assigned a value but never read File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 27
-Warning (10230): Verilog HDL assignment warning at uart_rx.sv(82): truncated value with size 32 to match size of target (13) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 82
-Warning (10230): Verilog HDL assignment warning at uart_rx.sv(91): truncated value with size 32 to match size of target (3) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 91
-Warning (10230): Verilog HDL assignment warning at uart_rx.sv(98): truncated value with size 32 to match size of target (8) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 98
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(76): truncated value with size 32 to match size of target (13) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 76
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(85): truncated value with size 32 to match size of target (3) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 85
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(92): truncated value with size 32 to match size of target (8) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 92
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(105): truncated value with size 32 to match size of target (13) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 105
 Info (12128): Elaborating entity "uart_tx" for hierarchy "uartController:uart_controller|uart_tx:uart_tx_inst" File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uartController.sv Line: 68
 Warning (10230): Verilog HDL assignment warning at uart_tx.sv(87): truncated value with size 32 to match size of target (13) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_tx.sv Line: 87
 Warning (10230): Verilog HDL assignment warning at uart_tx.sv(98): truncated value with size 32 to match size of target (13) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_tx.sv Line: 98
@@ -430,9 +434,9 @@ Info (21057): Implemented 128 device resources after synthesis - the final resou
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 5 output pins
     Info (21061): Implemented 120 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 4826 megabytes
-    Info: Processing ended: Tue May 20 17:58:10 2025
+    Info: Processing ended: Tue May 20 20:35:28 2025
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:18
 

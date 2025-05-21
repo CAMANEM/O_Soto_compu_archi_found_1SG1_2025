@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at uart_rx.sv(108): always construct contains both blocking and non-blocking assignments File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 108
+Warning (10268): Verilog HDL information at uart_rx.sv(103): always construct contains both blocking and non-blocking assignments File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 103

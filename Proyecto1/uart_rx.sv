@@ -23,8 +23,7 @@ module uart_rx #(
     logic rx_sync, rx_sync_next;
     logic ready_next;
     logic [7:0] data_next;
-    logic clk_countCMPclks_per_bit, clk_countCMPmid_sample;
-    logic stateCMPIDLE, stateCMPSTART_BIT, stateCMPDATA_BITS, stateCMPSTOP_BIT, stateCMPDONE, bit_indexCMP7;
+    logic clk_countCMPclks_per_bit, clk_countCMPmid_sample, bit_indexCMP7;
 
     // Sincronizador
     always_ff @(posedge clk) rx_sync <= rx;
@@ -32,11 +31,6 @@ module uart_rx #(
     // Comparadores
     assign clk_countCMPclks_per_bit = ~| (clk_count ^ (CLKS_PER_BIT - 1));
     assign clk_countCMPmid_sample   = ~|(clk_count ^ (MID_SAMPLE-1));
-    assign stateCMPIDLE = ~| (state ^ IDLE);
-    assign stateCMPSTART_BIT = ~| (state ^ START_BIT);
-    assign stateCMPDATA_BITS = ~| (state ^ DATA_BITS);
-    assign stateCMPSTOP_BIT = ~| (state ^ STOP_BIT);
-    assign stateCMPDONE = ~| (state ^ DONE);
     assign bit_indexCMP7 = ~| (bit_index ^ 3'd7);
 
 
@@ -99,29 +93,20 @@ module uart_rx #(
                        (state == DATA_BITS && clk_countCMPclks_per_bit) ? {rx_sync, rx_data[7:1]} : rx_data;
 
         // data_next
-        assign data_next = (state == DONE) ? rx_data : data;
+        assign data_next = ((~|(state ^ DONE)) & data) | (~(~|(state ^ DONE)) & rx_data);
 
         // ready_next
         assign ready_next = ~|(state ^ DONE);
         //(state == DONE);
 
 
-    always_ff @(posedge clk or posedge reset) begin
-        if (reset) begin
-            state <= IDLE;
-            clk_count <= 0;
-            bit_index <= 0;
-            rx_data <= 0;
-            data <= 0;
-            ready <= 0;
-        end else begin
-            state <= state_next;
-            clk_count <= clk_count_next;
-            bit_index <= bit_index_next;
-            rx_data <= rx_data_next;
-            data <= data_next;
-            ready <= ready_next;
-        end
+    always_ff @(posedge clk) begin
+        state <= (~reset & state_next) | (reset & IDLE);
+        clk_count <= (~reset & clk_count_next) | (reset & 0);
+        bit_index <= (~reset & bit_index_next) | (reset & 3'b000);
+        rx_data <= (~reset & rx_data_next) | (reset & 8'b0);
+        data <= (~reset & data_next) | (reset & 8'b0);
+        ready <= (~reset & ready_next) | (reset & 1'b0);
     end
 
 endmodule
