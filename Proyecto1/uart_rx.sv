@@ -88,16 +88,19 @@ module uart_rx #(
                          (state == DATA_BITS && clk_countCMPclks_per_bit && bit_index == 3'd7) ? bit_index :
                          (state == STOP_BIT && clk_countCMPclks_per_bit) ? 0 :
                          bit_index;
-        // rx_data_next
-        assign rx_data_next = (reset) ? 0 :
-                       (state == DATA_BITS && clk_countCMPclks_per_bit) ? {rx_sync, rx_data[7:1]} : rx_data;
 
-        // data_next
+        // rx_data_next
+        //assign rx_data_next = (reset) ? 0 :
+        //               (state == DATA_BITS && clk_countCMPclks_per_bit) ? {rx_sync, rx_data[7:1]} : rx_data;
+        // mux 3to1 
+        assign rx_data_next = ({8{reset}} & 8'b0) | 
+                              ({8{~reset & ((~|(state ^ DATA_BITS)) && clk_countCMPclks_per_bit)}} & {rx_sync, rx_data[7:1]}) | 
+                              ({8{~reset & ~((~|(state ^ DATA_BITS)) && clk_countCMPclks_per_bit)}} & rx_data);
+        // mux 3to1
         assign data_next = ((~|(state ^ DONE)) & data) | (~(~|(state ^ DONE)) & rx_data);
 
-        // ready_next
-        assign ready_next = ~|(state ^ DONE);
         //(state == DONE);
+        assign ready_next = ~|(state ^ DONE);
 
 
     always_ff @(posedge clk) begin

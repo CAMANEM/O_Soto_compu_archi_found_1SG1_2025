@@ -1,5 +1,5 @@
 Fitter report for Proyecto1
-Tue May 20 20:36:01 2025
+Tue May 20 21:37:06 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -63,15 +63,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Tue May 20 20:36:01 2025       ;
+; Fitter Status                   ; Successful - Tue May 20 21:37:06 2025       ;
 ; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                   ; Proyecto1                                   ;
 ; Top-level Entity Name           ; main_Top                                    ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSXFC6D6F31C6                              ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 62 / 41,910 ( < 1 % )                       ;
-; Total registers                 ; 91                                          ;
+; Logic utilization (in ALMs)     ; 61 / 41,910 ( < 1 % )                       ;
+; Total registers                 ; 92                                          ;
 ; Total pins                      ; 8 / 499 ( 2 % )                             ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 5,662,720 ( 0 % )                       ;
@@ -168,16 +168,17 @@ https://fpgasoftware.intel.com/eula.
 ; Node                                                                ; Action     ; Operation                                         ; Reason                     ; Node Port ; Node Port Name ; Destination Node                                                              ; Destination Port ; Destination Port Name ;
 +---------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------------------------------------------------+------------------+-----------------------+
 ; clk~inputCLKENA0                                                    ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                                               ;                  ;                       ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|data[4]         ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_rx:uart_rx_inst|data[4]~DUPLICATE         ;                  ;                       ;
+; uartController:uart_controller|state.IDLE                           ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|state.IDLE~DUPLICATE                           ;                  ;                       ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[2]         ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_rx:uart_rx_inst|data[2]~DUPLICATE         ;                  ;                       ;
 ; uartController:uart_controller|uart_rx:uart_rx_inst|state[1]        ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_rx:uart_rx_inst|state[1]~DUPLICATE        ;                  ;                       ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]~DUPLICATE        ;                  ;                       ;
 ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[0]    ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[0]~DUPLICATE    ;                  ;                       ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]    ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]~DUPLICATE    ;                  ;                       ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[7]    ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[7]~DUPLICATE    ;                  ;                       ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[10]   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[10]~DUPLICATE   ;                  ;                       ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP~DUPLICATE   ;                  ;                       ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]    ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]~DUPLICATE    ;                  ;                       ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[2]    ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[2]~DUPLICATE    ;                  ;                       ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[9]    ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[9]~DUPLICATE    ;                  ;                       ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|ready           ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|ready~DUPLICATE           ;                  ;                       ;
 ; uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS~DUPLICATE ;                  ;                       ;
 ; uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT~DUPLICATE ;                  ;                       ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|state.STOP_BIT  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; uartController:uart_controller|uart_tx:uart_tx_inst|state.STOP_BIT~DUPLICATE  ;                  ;                       ;
 +---------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------------------------------------------------+------------------+-----------------------+
 
 
@@ -187,8 +188,8 @@ https://fpgasoftware.intel.com/eula.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 198 ) ; 0.00 % ( 0 / 198 )         ; 0.00 % ( 0 / 198 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 198 ) ; 0.00 % ( 0 / 198 )         ; 0.00 % ( 0 / 198 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 199 ) ; 0.00 % ( 0 / 199 )         ; 0.00 % ( 0 / 199 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 199 ) ; 0.00 % ( 0 / 199 )         ; 0.00 % ( 0 / 199 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -211,7 +212,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 198 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 199 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -227,14 +228,14 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 +-------------------------------------------------------------+--------------------+-------+
 ; Resource                                                    ; Usage              ; %     ;
 +-------------------------------------------------------------+--------------------+-------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 62 / 41,910        ; < 1 % ;
-; ALMs needed [=A-B+C]                                        ; 62                 ;       ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 66 / 41,910        ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 35                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 25                 ;       ;
-;         [c] ALMs used for registers                         ; 6                  ;       ;
+; Logic utilization (ALMs needed / total ALMs on device)      ; 61 / 41,910        ; < 1 % ;
+; ALMs needed [=A-B+C]                                        ; 61                 ;       ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 69 / 41,910        ; < 1 % ;
+;         [a] ALMs used for LUT logic and registers           ; 33                 ;       ;
+;         [b] ALMs used for LUT logic                         ; 28                 ;       ;
+;         [c] ALMs used for registers                         ; 8                  ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 4 / 41,910         ; < 1 % ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 8 / 41,910         ; < 1 % ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 41,910         ; 0 %   ;
 ;         [a] Due to location constrained logic               ; 0                  ;       ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                  ;       ;
@@ -243,25 +244,25 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 ;                                                             ;                    ;       ;
 ; Difficulty packing design                                   ; Low                ;       ;
 ;                                                             ;                    ;       ;
-; Total LABs:  partially or completely used                   ; 8 / 4,191          ; < 1 % ;
-;     -- Logic LABs                                           ; 8                  ;       ;
+; Total LABs:  partially or completely used                   ; 10 / 4,191         ; < 1 % ;
+;     -- Logic LABs                                           ; 10                 ;       ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                  ;       ;
 ;                                                             ;                    ;       ;
-; Combinational ALUT usage for logic                          ; 101                ;       ;
+; Combinational ALUT usage for logic                          ; 102                ;       ;
 ;     -- 7 input functions                                    ; 4                  ;       ;
-;     -- 6 input functions                                    ; 21                 ;       ;
-;     -- 5 input functions                                    ; 10                 ;       ;
-;     -- 4 input functions                                    ; 7                  ;       ;
+;     -- 6 input functions                                    ; 19                 ;       ;
+;     -- 5 input functions                                    ; 12                 ;       ;
+;     -- 4 input functions                                    ; 8                  ;       ;
 ;     -- <=3 input functions                                  ; 59                 ;       ;
-; Combinational ALUT usage for route-throughs                 ; 2                  ;       ;
+; Combinational ALUT usage for route-throughs                 ; 3                  ;       ;
 ;                                                             ;                    ;       ;
-; Dedicated logic registers                                   ; 91                 ;       ;
+; Dedicated logic registers                                   ; 92                 ;       ;
 ;     -- By type:                                             ;                    ;       ;
 ;         -- Primary logic registers                          ; 81 / 83,820        ; < 1 % ;
-;         -- Secondary logic registers                        ; 10 / 83,820        ; < 1 % ;
+;         -- Secondary logic registers                        ; 11 / 83,820        ; < 1 % ;
 ;     -- By function:                                         ;                    ;       ;
 ;         -- Design implementation registers                  ; 81                 ;       ;
-;         -- Routing optimization registers                   ; 10                 ;       ;
+;         -- Routing optimization registers                   ; 11                 ;       ;
 ;                                                             ;                    ;       ;
 ; Virtual pins                                                ; 0                  ;       ;
 ; I/O pins                                                    ; 8 / 499            ; 2 %   ;
@@ -323,11 +324,11 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 ; Impedance control blocks                                    ; 0 / 4              ; 0 %   ;
 ; Hard Memory Controllers                                     ; 0 / 2              ; 0 %   ;
 ; Average interconnect usage (total/H/V)                      ; 0.0% / 0.0% / 0.0% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 0.8% / 1.0% / 0.5% ;       ;
-; Maximum fan-out                                             ; 91                 ;       ;
-; Highest non-global fan-out                                  ; 65                 ;       ;
-; Total fan-out                                               ; 679                ;       ;
-; Average fan-out                                             ; 3.22               ;       ;
+; Peak interconnect usage (total/H/V)                         ; 0.9% / 0.9% / 0.6% ;       ;
+; Maximum fan-out                                             ; 92                 ;       ;
+; Highest non-global fan-out                                  ; 68                 ;       ;
+; Total fan-out                                               ; 686                ;       ;
+; Average fan-out                                             ; 3.21               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
 
@@ -336,14 +337,14 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 +-------------------------------------------------------------+----------------------+--------------------------------+
 ; Statistic                                                   ; Top                  ; hard_block:auto_generated_inst ;
 +-------------------------------------------------------------+----------------------+--------------------------------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 62 / 41910 ( < 1 % ) ; 0 / 41910 ( 0 % )              ;
-; ALMs needed [=A-B+C]                                        ; 62                   ; 0                              ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 66 / 41910 ( < 1 % ) ; 0 / 41910 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 35                   ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 25                   ; 0                              ;
-;         [c] ALMs used for registers                         ; 6                    ; 0                              ;
+; Logic utilization (ALMs needed / total ALMs on device)      ; 61 / 41910 ( < 1 % ) ; 0 / 41910 ( 0 % )              ;
+; ALMs needed [=A-B+C]                                        ; 61                   ; 0                              ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 69 / 41910 ( < 1 % ) ; 0 / 41910 ( 0 % )              ;
+;         [a] ALMs used for LUT logic and registers           ; 33                   ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 28                   ; 0                              ;
+;         [c] ALMs used for registers                         ; 8                    ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                    ; 0                              ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 4 / 41910 ( < 1 % )  ; 0 / 41910 ( 0 % )              ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 8 / 41910 ( < 1 % )  ; 0 / 41910 ( 0 % )              ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 41910 ( 0 % )    ; 0 / 41910 ( 0 % )              ;
 ;         [a] Due to location constrained logic               ; 0                    ; 0                              ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                    ; 0                              ;
@@ -352,17 +353,17 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 ;                                                             ;                      ;                                ;
 ; Difficulty packing design                                   ; Low                  ; Low                            ;
 ;                                                             ;                      ;                                ;
-; Total LABs:  partially or completely used                   ; 8 / 4191 ( < 1 % )   ; 0 / 4191 ( 0 % )               ;
-;     -- Logic LABs                                           ; 8                    ; 0                              ;
+; Total LABs:  partially or completely used                   ; 10 / 4191 ( < 1 % )  ; 0 / 4191 ( 0 % )               ;
+;     -- Logic LABs                                           ; 10                   ; 0                              ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
-; Combinational ALUT usage for logic                          ; 101                  ; 0                              ;
+; Combinational ALUT usage for logic                          ; 102                  ; 0                              ;
 ;     -- 7 input functions                                    ; 4                    ; 0                              ;
-;     -- 6 input functions                                    ; 21                   ; 0                              ;
-;     -- 5 input functions                                    ; 10                   ; 0                              ;
-;     -- 4 input functions                                    ; 7                    ; 0                              ;
+;     -- 6 input functions                                    ; 19                   ; 0                              ;
+;     -- 5 input functions                                    ; 12                   ; 0                              ;
+;     -- 4 input functions                                    ; 8                    ; 0                              ;
 ;     -- <=3 input functions                                  ; 59                   ; 0                              ;
-; Combinational ALUT usage for route-throughs                 ; 2                    ; 0                              ;
+; Combinational ALUT usage for route-throughs                 ; 3                    ; 0                              ;
 ; Memory ALUT usage                                           ; 0                    ; 0                              ;
 ;     -- 64-address deep                                      ; 0                    ; 0                              ;
 ;     -- 32-address deep                                      ; 0                    ; 0                              ;
@@ -370,10 +371,10 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 ; Dedicated logic registers                                   ; 0                    ; 0                              ;
 ;     -- By type:                                             ;                      ;                                ;
 ;         -- Primary logic registers                          ; 81 / 83820 ( < 1 % ) ; 0 / 83820 ( 0 % )              ;
-;         -- Secondary logic registers                        ; 10 / 83820 ( < 1 % ) ; 0 / 83820 ( 0 % )              ;
+;         -- Secondary logic registers                        ; 11 / 83820 ( < 1 % ) ; 0 / 83820 ( 0 % )              ;
 ;     -- By function:                                         ;                      ;                                ;
 ;         -- Design implementation registers                  ; 81                   ; 0                              ;
-;         -- Routing optimization registers                   ; 10                   ; 0                              ;
+;         -- Routing optimization registers                   ; 11                   ; 0                              ;
 ;                                                             ;                      ;                                ;
 ;                                                             ;                      ;                                ;
 ; Virtual pins                                                ; 0                    ; 0                              ;
@@ -390,8 +391,8 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 ;     -- Registered Output Connections                        ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Internal Connections                                        ;                      ;                                ;
-;     -- Total Connections                                    ; 682                  ; 0                              ;
-;     -- Registered Connections                               ; 247                  ; 0                              ;
+;     -- Total Connections                                    ; 688                  ; 0                              ;
+;     -- Registered Connections                               ; 244                  ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; External Connections                                        ;                      ;                                ;
 ;     -- Top                                                  ; 0                    ; 0                              ;
@@ -423,8 +424,8 @@ The pin-out file can be found in C:/Users/caman/Documents/Github/O_Soto_compu_ar
 +--------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 ; Name   ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ; Slew Rate ;
 +--------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
-; clk    ; AF14  ; 3B       ; 32           ; 0            ; 0            ; 91                    ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; User                 ; no        ;
-; rst    ; AA30  ; 5B       ; 89           ; 21           ; 20           ; 65                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; User                 ; no        ;
+; clk    ; AF14  ; 3B       ; 32           ; 0            ; 0            ; 92                    ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; User                 ; no        ;
+; rst    ; AA30  ; 5B       ; 89           ; 21           ; 20           ; 68                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; User                 ; no        ;
 ; rx_pin ; AA12  ; 3A       ; 12           ; 0            ; 0            ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; User                 ; no        ;
 +--------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 
@@ -1391,10 +1392,10 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +-------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
 ; Compilation Hierarchy Node          ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Entity Name    ; Library Name ;
 +-------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
-; |main_Top                           ; 62.0 (0.5)           ; 65.5 (0.5)                       ; 3.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 101 (1)             ; 91 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 8    ; 0            ; |main_Top                                                     ; main_Top       ; work         ;
-;    |uartController:uart_controller| ; 61.5 (8.0)           ; 65.0 (9.7)                       ; 3.5 (1.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 100 (13)            ; 91 (13)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller                      ; uartController ; work         ;
-;       |uart_rx:uart_rx_inst|        ; 31.7 (31.7)          ; 32.3 (32.3)                      ; 0.7 (0.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 51 (51)             ; 40 (40)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst ; uart_rx        ; work         ;
-;       |uart_tx:uart_tx_inst|        ; 21.8 (21.8)          ; 23.0 (23.0)                      ; 1.2 (1.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 36 (36)             ; 38 (38)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst ; uart_tx        ; work         ;
+; |main_Top                           ; 61.0 (0.5)           ; 68.0 (0.5)                       ; 7.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 102 (1)             ; 92 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 8    ; 0            ; |main_Top                                                     ; main_Top       ; work         ;
+;    |uartController:uart_controller| ; 60.5 (7.9)           ; 67.5 (8.6)                       ; 7.0 (0.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 101 (13)            ; 92 (14)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller                      ; uartController ; work         ;
+;       |uart_rx:uart_rx_inst|        ; 30.8 (30.8)          ; 34.5 (34.5)                      ; 3.7 (3.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 52 (52)             ; 39 (39)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst ; uart_rx        ; work         ;
+;       |uart_tx:uart_tx_inst|        ; 21.8 (21.8)          ; 24.4 (24.4)                      ; 2.6 (2.6)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 36 (36)             ; 39 (39)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst ; uart_tx        ; work         ;
 +-------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1422,21 +1423,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------------------------------------------+-------------------+---------+
 ; clk                                                                                  ;                   ;         ;
 ; rst                                                                                  ;                   ;         ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[8]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[6]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[5]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[4]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[3]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[7]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[1]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[0]              ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[2]              ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[12]             ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[11]             ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[10]             ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[1]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[2]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[3]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[4]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[5]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[6]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[7]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[0]              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[8]              ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[9]              ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_rx:uart_rx_inst|data[0]                   ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[0]                ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[0]                ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_rx:uart_rx_inst|state[0]                  ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[0]              ; 0                 ; 0       ;
@@ -1448,16 +1448,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS           ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|state.STOP_BIT            ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|tx                        ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]~2            ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]~3            ; 0                 ; 0       ;
 ;      - uartController:uart_controller|tx_send                                        ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]              ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]              ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[0]              ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT           ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[0]~0         ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[1]~1         ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[1]~0              ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[2]~2         ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[3]~3         ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[0]~2         ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[2]~3         ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[3]~4         ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|ready                     ; 0                 ; 0       ;
 ;      - uartController:uart_controller|state.WAIT_COMMAND                             ; 0                 ; 0       ;
 ;      - uartController:uart_controller|state.HANDSHAKE_SEND                           ; 0                 ; 0       ;
@@ -1466,10 +1467,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - uartController:uart_controller|tx_data[7]                                     ; 0                 ; 0       ;
 ;      - uartController:uart_controller|tx_data[4]                                     ; 0                 ; 0       ;
 ;      - uartController:uart_controller|tx_data[6]                                     ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11]~0           ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11]~1           ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[1]~1            ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[4]~4         ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[9]~0            ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[9]~1            ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[0]~5         ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]~0            ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[4]~6         ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_rx:uart_rx_inst|ready~0                   ; 0                 ; 0       ;
 ;      - uartController:uart_controller|state.WAIT_HANDSHAKE_DONE                      ; 0                 ; 0       ;
 ;      - uartController:uart_controller|state.IDLE                                     ; 0                 ; 0       ;
@@ -1477,37 +1479,39 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - uartController:uart_controller|tx_data[3]                                     ; 0                 ; 0       ;
 ;      - uartController:uart_controller|tx_data[0]                                     ; 0                 ; 0       ;
 ;      - uartController:uart_controller|tx_data[2]                                     ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[5]~5         ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[6]~6         ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[7]~7         ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[7]~DUPLICATE    ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[10]~DUPLICATE   ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP~DUPLICATE   ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[5]~7         ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[6]~8         ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[9]~2            ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[2]~DUPLICATE    ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[9]~DUPLICATE    ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|state.STOP_BIT~DUPLICATE  ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS~DUPLICATE ; 0                 ; 0       ;
-;      - uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]~DUPLICATE    ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]~DUPLICATE    ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[0]~DUPLICATE    ; 0                 ; 0       ;
 ;      - uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT~DUPLICATE ; 0                 ; 0       ;
+;      - uartController:uart_controller|uart_tx:uart_tx_inst|ready~DUPLICATE           ; 0                 ; 0       ;
+;      - uartController:uart_controller|state.IDLE~DUPLICATE                           ; 0                 ; 0       ;
 ; rx_pin                                                                               ;                   ;         ;
 ;      - uartController:uart_controller|uart_rx:uart_rx_inst|rx_sync                   ; 0                 ; 0       ;
 +--------------------------------------------------------------------------------------+-------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                                                                                            ;
-+---------------------------------------------------------------------+---------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
-; Name                                                                ; Location            ; Fan-Out ; Usage                                 ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+---------------------------------------------------------------------+---------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
-; clk                                                                 ; PIN_AF14            ; 91      ; Clock                                 ; yes    ; Global Clock         ; GCLK6            ; --                        ;
-; rst                                                                 ; PIN_AA30            ; 62      ; Async. clear, Sync. clear, Sync. load ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|Selector1~3                          ; MLABCELL_X78_Y7_N21 ; 2       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|Selector4~1                          ; LABCELL_X79_Y8_N6   ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11]~0 ; LABCELL_X81_Y7_N42  ; 12      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11]~1 ; LABCELL_X80_Y7_N30  ; 12      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[1]~0    ; LABCELL_X80_Y7_N45  ; 7       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|Selector2~3     ; LABCELL_X79_Y8_N12  ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[12]~0 ; LABCELL_X80_Y8_N51  ; 15      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|tx_data[7]~0    ; LABCELL_X81_Y8_N3   ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
-+---------------------------------------------------------------------+---------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                                                                              ;
++-----------------------------------------------------------------------+---------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
+; Name                                                                  ; Location            ; Fan-Out ; Usage                                 ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++-----------------------------------------------------------------------+---------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
+; clk                                                                   ; PIN_AF14            ; 92      ; Clock                                 ; yes    ; Global Clock         ; GCLK6            ; --                        ;
+; rst                                                                   ; PIN_AA30            ; 66      ; Async. clear, Sync. clear, Sync. load ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|Selector3~3                            ; LABCELL_X88_Y9_N21  ; 3       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|Selector4~1                            ; MLABCELL_X84_Y9_N57 ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[9]~0    ; MLABCELL_X87_Y8_N42 ; 12      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[9]~1    ; LABCELL_X88_Y9_N27  ; 12      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data_next[0]~2 ; MLABCELL_X87_Y9_N15 ; 7       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|Selector2~0       ; LABCELL_X83_Y9_N18  ; 16      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[8]~0    ; MLABCELL_X82_Y9_N45 ; 15      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|tx_data[7]~0      ; LABCELL_X83_Y9_N3   ; 8       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
++-----------------------------------------------------------------------+---------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
 
 
 +-------------------------------------------------------------------------------------------------+
@@ -1515,7 +1519,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------+----------+---------+----------------------+------------------+---------------------------+
 ; Name ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +------+----------+---------+----------------------+------------------+---------------------------+
-; clk  ; PIN_AF14 ; 91      ; Global Clock         ; GCLK6            ; --                        ;
+; clk  ; PIN_AF14 ; 92      ; Global Clock         ; GCLK6            ; --                        ;
 +------+----------+---------+----------------------+------------------+---------------------------+
 
 
@@ -1524,14 +1528,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------+-------------------------+
 ; Routing Resource Type                       ; Usage                   ;
 +---------------------------------------------+-------------------------+
-; Block interconnects                         ; 158 / 289,320 ( < 1 % ) ;
-; C12 interconnects                           ; 3 / 13,420 ( < 1 % )    ;
-; C2 interconnects                            ; 15 / 119,108 ( < 1 % )  ;
-; C4 interconnects                            ; 8 / 56,300 ( < 1 % )    ;
+; Block interconnects                         ; 149 / 289,320 ( < 1 % ) ;
+; C12 interconnects                           ; 2 / 13,420 ( < 1 % )    ;
+; C2 interconnects                            ; 27 / 119,108 ( < 1 % )  ;
+; C4 interconnects                            ; 9 / 56,300 ( < 1 % )    ;
 ; DQS bus muxes                               ; 0 / 25 ( 0 % )          ;
 ; DQS-18 I/O buses                            ; 0 / 25 ( 0 % )          ;
 ; DQS-9 I/O buses                             ; 0 / 25 ( 0 % )          ;
-; Direct links                                ; 64 / 289,320 ( < 1 % )  ;
+; Direct links                                ; 39 / 289,320 ( < 1 % )  ;
 ; Global clocks                               ; 1 / 16 ( 6 % )          ;
 ; HPS SDRAM PLL inputs                        ; 0 / 1 ( 0 % )           ;
 ; HPS SDRAM PLL outputs                       ; 0 / 1 ( 0 % )           ;
@@ -1587,12 +1591,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HPS_INTERFACE_TPIU_TRACE_INPUTs             ; 0 / 2 ( 0 % )           ;
 ; HPS_INTERFACE_TPIU_TRACE_OUTPUTs            ; 0 / 33 ( 0 % )          ;
 ; Horizontal periphery clocks                 ; 0 / 72 ( 0 % )          ;
-; Local interconnects                         ; 75 / 84,580 ( < 1 % )   ;
+; Local interconnects                         ; 85 / 84,580 ( < 1 % )   ;
 ; Quadrant clocks                             ; 0 / 66 ( 0 % )          ;
-; R14 interconnects                           ; 14 / 12,676 ( < 1 % )   ;
-; R14/C12 interconnect drivers                ; 15 / 20,720 ( < 1 % )   ;
-; R3 interconnects                            ; 44 / 130,992 ( < 1 % )  ;
-; R6 interconnects                            ; 45 / 266,960 ( < 1 % )  ;
+; R14 interconnects                           ; 13 / 12,676 ( < 1 % )   ;
+; R14/C12 interconnect drivers                ; 13 / 20,720 ( < 1 % )   ;
+; R3 interconnects                            ; 50 / 130,992 ( < 1 % )  ;
+; R6 interconnects                            ; 46 / 266,960 ( < 1 % )  ;
 ; Spine clocks                                ; 1 / 360 ( < 1 % )       ;
 ; Wire stub REs                               ; 0 / 15,858 ( 0 % )      ;
 +---------------------------------------------+-------------------------+
@@ -1716,7 +1720,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------+----------------------+-------------------+
 ; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
 +-----------------+----------------------+-------------------+
-; clk             ; clk                  ; 9.0               ;
+; clk             ; clk                  ; 9.7               ;
 +-----------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
@@ -1727,47 +1731,70 @@ This will disable optimization of problematic paths and expose them for further 
 +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------+
 ; Source Register                                                     ; Destination Register                                                ; Delay Added in ns ;
 +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------+
-; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[0]    ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]    ; 0.263             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[0]    ; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[1]    ; 0.262             ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]    ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]    ; 0.258             ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|state.STOP_BIT  ; uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS ; 0.243             ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS ; uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT ; 0.234             ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; uartController:uart_controller|uart_tx:uart_tx_inst|tx              ; 0.234             ;
-; uartController:uart_controller|state.IDLE                           ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.229             ;
-; uartController:uart_controller|tx_send                              ; uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT ; 0.227             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|data[0]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.227             ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|state.IDLE      ; uartController:uart_controller|uart_tx:uart_tx_inst|ready           ; 0.217             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]    ; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]    ; 0.217             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|state[1]        ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[0]      ; 0.215             ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]    ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]    ; 0.200             ;
-; uartController:uart_controller|uart_tx:uart_tx_inst|ready           ; uartController:uart_controller|tx_send                              ; 0.192             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[2]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[1]      ; 0.192             ;
-; uartController:uart_controller|state.WAIT_HANDSHAKE_DONE            ; uartController:uart_controller|state.WAIT_COMMAND                   ; 0.189             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[4]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[3]      ; 0.185             ;
-; uartController:uart_controller|state.HANDSHAKE_SEND                 ; uartController:uart_controller|state.WAIT_HANDSHAKE_DONE            ; 0.184             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[7]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[6]      ; 0.171             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|rx_sync         ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[7]      ; 0.171             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.148             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.148             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11]   ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[12]   ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[9]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[8]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[7]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[6]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[5]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[4]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[1]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[10]   ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[3]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[0]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[2]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; 0.146             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[1]    ; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[1]    ; 0.089             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[0]    ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]    ; 0.264             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]    ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]    ; 0.261             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS ; uartController:uart_controller|uart_tx:uart_tx_inst|state.STOP_BIT  ; 0.260             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|state.STOP_BIT  ; uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS ; 0.248             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[0]    ; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]    ; 0.247             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|ready           ; uartController:uart_controller|state.WAIT_HANDSHAKE_DONE            ; 0.230             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; uartController:uart_controller|uart_tx:uart_tx_inst|tx              ; 0.222             ;
+; uartController:uart_controller|state.IDLE                           ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.219             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]    ; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[2]    ; 0.218             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|state.IDLE      ; uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT ; 0.211             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[0]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.210             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|state[1]        ; uartController:uart_controller|uart_rx:uart_rx_inst|data[0]         ; 0.209             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[3]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[2]      ; 0.198             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[2]    ; uartController:uart_controller|uart_tx:uart_tx_inst|bit_index[1]    ; 0.196             ;
+; uartController:uart_controller|state.WAIT_HANDSHAKE_DONE            ; uartController:uart_controller|state.WAIT_COMMAND                   ; 0.194             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[6]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[5]      ; 0.190             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[2]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[1]      ; 0.190             ;
+; uartController:uart_controller|state.HANDSHAKE_SEND                 ; uartController:uart_controller|state.WAIT_HANDSHAKE_DONE            ; 0.187             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[7]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[6]      ; 0.175             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[5]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[4]      ; 0.175             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[4]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[3]      ; 0.175             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[0]      ; uartController:uart_controller|uart_rx:uart_rx_inst|data[0]         ; 0.155             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|state[2]        ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.149             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.147             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_sync         ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.147             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[8]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.137             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[2]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.129             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[3]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.129             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[7]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.129             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[6]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.129             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[5]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.129             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|data[4]         ; uartController:uart_controller|state.HANDSHAKE_SEND                 ; 0.129             ;
+; uartController:uart_controller|tx_send                              ; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[12]   ; 0.116             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[8]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.100             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[1]    ; uartController:uart_controller|uart_rx:uart_rx_inst|bit_index[0]    ; 0.093             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[6]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.092             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|ready           ; uartController:uart_controller|tx_send                              ; 0.092             ;
+; uartController:uart_controller|tx_data[1]                           ; uartController:uart_controller|uart_tx:uart_tx_inst|tx_data[1]      ; 0.087             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[10]   ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[9]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[6]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[5]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[3]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[11]   ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[7]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[1]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[0]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[12]   ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[4]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|clk_count[2]    ; uartController:uart_controller|uart_rx:uart_rx_inst|state[0]        ; 0.081             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[11]   ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.077             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[7]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.077             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[9]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.077             ;
 ; uartController:uart_controller|uart_tx:uart_tx_inst|state.START_BIT ; uartController:uart_controller|uart_tx:uart_tx_inst|state.DATA_BITS ; 0.075             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[0]      ; uartController:uart_controller|uart_rx:uart_rx_inst|data[0]         ; 0.056             ;
-; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[1]      ; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[0]      ; 0.033             ;
+; uartController:uart_controller|tx_data[3]                           ; uartController:uart_controller|uart_tx:uart_tx_inst|tx_data[3]      ; 0.072             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[5]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.072             ;
+; uartController:uart_controller|uart_rx:uart_rx_inst|rx_data[1]      ; uartController:uart_controller|uart_rx:uart_rx_inst|data[1]         ; 0.072             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[3]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.062             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[2]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.062             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[1]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.062             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[0]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.062             ;
+; uartController:uart_controller|uart_tx:uart_tx_inst|clk_count[4]    ; uartController:uart_controller|uart_tx:uart_tx_inst|state.CLEANUP   ; 0.057             ;
 +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------+
-Note: This table only shows the top 39 path(s) that have the largest delay added for hold.
+Note: This table only shows the top 62 path(s) that have the largest delay added for hold.
 
 
 +-----------------+
@@ -1793,20 +1820,20 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:12
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:11
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:02
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X78_Y0 to location X89_Y10
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.26 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.29 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -1814,9 +1841,9 @@ Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:03
 Info (144001): Generated suppressed messages file C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/output_files/Proyecto1.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 6561 megabytes
-    Info: Processing ended: Tue May 20 20:36:02 2025
-    Info: Elapsed time: 00:00:33
+    Info: Peak virtual memory: 6552 megabytes
+    Info: Processing ended: Tue May 20 21:37:07 2025
+    Info: Elapsed time: 00:00:34
     Info: Total CPU time (on all processors): 00:00:53
 
 
