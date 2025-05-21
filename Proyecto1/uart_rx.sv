@@ -26,7 +26,6 @@ module uart_rx #(
     logic clk_countCMPclks_per_bit, clk_countCMPmid_sample, bit_indexCMP7;
 
     // Sincronizador
-    always_ff @(posedge clk) rx_sync <= rx;
 
     // Comparadores
     assign clk_countCMPclks_per_bit = ~| (clk_count ^ (CLKS_PER_BIT - 1));
@@ -71,7 +70,7 @@ module uart_rx #(
                                (~state[2]&state[1]&state[0]&~clk_countCMPclks_per_bit);
 
 
-
+/*
         // clk_count_next
         assign clk_count_next = (reset) ? 0 :
                          ((state == IDLE && ~rx_sync) ? 0 :
@@ -80,7 +79,20 @@ module uart_rx #(
                          (state == STOP_BIT && clk_countCMPclks_per_bit) ? 0 :
                          (state == IDLE) ? clk_count :
                          clk_count + 1);
+*/
+        assign clk_count_next = ({$clog2(CLKS_PER_BIT){reset}} & '0) |
+                        ({$clog2(CLKS_PER_BIT){~reset & (~|(state ^ IDLE)) & ~rx_sync}} & '0) |
+                        ({$clog2(CLKS_PER_BIT){~reset & (~|(state ^ START_BIT)) & clk_countCMPmid_sample}} & '0) |
+                        ({$clog2(CLKS_PER_BIT){~reset & (~|(state ^ DATA_BITS)) & clk_countCMPclks_per_bit}} & '0) |
+                        ({$clog2(CLKS_PER_BIT){~reset & (~|(state ^ STOP_BIT)) & clk_countCMPclks_per_bit}} & '0) |
+                        ({$clog2(CLKS_PER_BIT){~reset & (~|(state ^ IDLE))  & ~(~rx_sync)}} & clk_count) |
+                        ({$clog2(CLKS_PER_BIT){~reset & ~( (~|(state ^ IDLE)) | 
+                                                           ((~|(state ^ START_BIT)) & clk_countCMPmid_sample) | 
+                                                           ((~|(state ^ DATA_BITS)) & clk_countCMPclks_per_bit) | 
+                                                           ((~|(state ^ STOP_BIT)) & clk_countCMPclks_per_bit) | 
+                                                           ((~|(state ^ IDLE)) & ~rx_sync) )}} & (clk_count + 1));
 
+/*
         // bit_index_next
         assign bit_index_next = (reset) ? 0 :
                          (state == START_BIT && clk_countCMPmid_sample) ? 0 :
@@ -88,6 +100,16 @@ module uart_rx #(
                          (state == DATA_BITS && clk_countCMPclks_per_bit && bit_index == 3'd7) ? bit_index :
                          (state == STOP_BIT && clk_countCMPclks_per_bit) ? 0 :
                          bit_index;
+*/
+
+        assign bit_index_next = ({3{reset}} & 3'b000) |
+                                ({3{~reset & (~|(state ^ START_BIT)) & clk_countCMPmid_sample}} & 3'b000) |
+                                ({3{~reset & (~|(state ^ DATA_BITS)) & clk_countCMPclks_per_bit & (~(~|(bit_index ^ 3'd7)))}} & (bit_index + 1)) |
+                                ({3{~reset & (~|(state ^ DATA_BITS)) & clk_countCMPclks_per_bit & (~|(bit_index ^ 3'd7))}} & bit_index) |
+                                ({3{~reset & (~|(state ^ STOP_BIT)) & clk_countCMPclks_per_bit}} & 3'b000) |
+                                ({3{~reset & ~(((~|(state ^ START_BIT)) & clk_countCMPmid_sample) |
+                                    ((~|(state ^ DATA_BITS)) & clk_countCMPclks_per_bit) |
+                                    ((~|(state ^ STOP_BIT)) & clk_countCMPclks_per_bit))}} & bit_index);
 
         // rx_data_next
         //assign rx_data_next = (reset) ? 0 :
@@ -104,6 +126,7 @@ module uart_rx #(
 
 
     always_ff @(posedge clk) begin
+        rx_sync <= rx;
         state <= (~reset & state_next) | (reset & IDLE);
         clk_count <= (~reset & clk_count_next) | (reset & 0);
         bit_index <= (~reset & bit_index_next) | (reset & 3'b000);

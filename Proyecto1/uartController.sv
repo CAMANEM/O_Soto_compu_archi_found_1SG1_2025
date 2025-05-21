@@ -75,8 +75,7 @@ module uartController (
         IDLE,                   ///< Waits for 'H' (handshake start)
         HANDSHAKE_SEND,         ///< Sends 'K' to confirm handshake
         WAIT_HANDSHAKE_DONE,    ///< Waits until TX is no longer ready (transmit done)
-        WAIT_COMMAND,           ///< Waits for a command after handshake
-        PROCESS_COMMAND         ///< Handles incoming 'C' or 'S' commands
+        WAIT_COMMAND           ///< Waits for a command after handshake
     } state_t;
 
     state_t state = IDLE;
