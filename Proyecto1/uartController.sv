@@ -33,8 +33,31 @@ module uartController (
     logic [7:0] rx_data;            ///< Data received from UART
     logic rx_ready;                 ///< High when a new byte has been received
     logic [7:0] tx_data;            ///< Data to transmit over UART
+    logic [7:0] tx_data_next;       ///< Next state for tx_data
     logic tx_ready;                 ///< High when ready to send
     logic tx_send;                  ///< Trigger signal to send a byte
+    logic tx_send_next;           ///< Next state for tx_send
+    logic [1:0] state_next;           ///< Next state for the FSM
+    logic [1:0] state;               ///< Current state of the FSM
+
+    // compare
+    logic rx_dataCMP15;
+    logic reset;
+    logic [7:0] isReady_rx_tx;
+
+        /**
+     * @enum state_t
+     * @brief Finite State Machine (FSM) states for UART control logic
+     */
+    typedef enum logic [1:0] {
+        IDLE,                   ///< Waits for 'H' (handshake start)
+        HANDSHAKE_SEND,         ///< Sends 'K' to confirm handshake
+        WAIT_HANDSHAKE_DONE,    ///< Waits until TX is no longer ready (transmit done)
+        WAIT_COMMAND           ///< Waits for a command after handshake
+    } state_t;
+
+    //state_t state = IDLE;
+    //state_t  state_next;
 
     /**
      * UART receiver instance
@@ -67,61 +90,45 @@ module uartController (
         .ready(tx_ready)
     );
 
-    /**
-     * @enum state_t
-     * @brief Finite State Machine (FSM) states for UART control logic
-     */
-    typedef enum logic [2:0] {
-        IDLE,                   ///< Waits for 'H' (handshake start)
-        HANDSHAKE_SEND,         ///< Sends 'K' to confirm handshake
-        WAIT_HANDSHAKE_DONE,    ///< Waits until TX is no longer ready (transmit done)
-        WAIT_COMMAND           ///< Waits for a command after handshake
-    } state_t;
+    assign rx_dataCMP15 = ~| (rx_data ^ 8'd15);
 
-    state_t state = IDLE;
+/*
+    assign state_next = (state == IDLE && rx_ready && rx_data == 8'd15)                ? HANDSHAKE_SEND :
+                     (state == HANDSHAKE_SEND && tx_ready)                         ? WAIT_HANDSHAKE_DONE :
+                     (state == WAIT_HANDSHAKE_DONE && !tx_ready)                   ? WAIT_COMMAND :
+                     state;
+*/
+    assign state_next[1] = (~state[1]&state[0]&tx_ready)|(state[1]&~state[0]&~tx_ready)|(state[1]&~state[0]&tx_ready)|(state[1]&state[0]);
+    assign state_next[0] = (~state[1]&~state[0]&tx_ready&rx_ready&rx_dataCMP15)|(~state[1]&state[0]&~tx_ready)|(state[1]&~state[0]&~tx_ready)|(state[1]&state[0]);
+
+    assign isReady_rx_tx = ({8{(~|(state ^ WAIT_COMMAND)) & rx_ready & tx_ready}});
+
+    assign tx_data_next = (isReady_rx_tx & rx_data) | (~isReady_rx_tx & tx_data);
+    
+    //assign data_next = ((~|(state ^ DONE)) & data) | (~(~|(state ^ DONE)) & rx_data);
+
+    assign tx_send_next = (~state[1] & state[0] & tx_ready) | 
+                          (state[1] & state[0] & rx_ready & tx_ready);
+    
+    always_ff @(posedge clk) begin
+        reset <= rst;
+    end
 
     /**
      * Main FSM logic for UART handshake and command reception
      */
     always_ff @(posedge clk or posedge rst) begin
+        //state <= (~rst & state_next) | (rst & IDLE);
         if (rst) begin
-            state <= IDLE;
+            state   <= IDLE;
             tx_send <= 0;
             tx_data <= 8'd14; // ASCII 'K'
             // display_data <= 8'h00;
         end else begin
-            tx_send <= 0;
-
-            case (state)
-                IDLE: begin
-                    // Wait for handshake byte 'H' (0x48)
-                    if (rx_ready && rx_data == 8'd15) begin
-                        // display_data <= rx_data;
-                        state <= HANDSHAKE_SEND;
-                    end
-                end
-
-                HANDSHAKE_SEND: begin
-                    // Send back 'K' (0x4B) if TX is ready
-                    if (tx_ready) begin
-                        tx_send <= 1;
-                        state <= WAIT_HANDSHAKE_DONE;
-                    end
-                end
-
-                WAIT_HANDSHAKE_DONE: begin
-                    // Wait for TX to finish before moving to command state
-                    if (!tx_ready)
-                        state <= WAIT_COMMAND;
-                end
-
-               WAIT_COMMAND: begin
-                    if (rx_ready && tx_ready) begin
-                        tx_data <= rx_data;  // Echo back received data
-                        tx_send <= 1;
-                    end
-                end
-            endcase
+            // Default assignments
+            tx_data <= tx_data_next;
+            tx_send <= tx_send_next;
+            state <= state_next;
         end
     end
 
