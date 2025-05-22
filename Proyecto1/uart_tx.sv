@@ -56,12 +56,17 @@ module uart_tx #(
 
     // Clock cycle counter for baud timing
     logic [12:0] clk_count = 0;
+    logic [12:0] clk_count_next;
 
     // Bit index tracker for transmission
     logic [2:0] bit_index = 0;
+    logic [2:0] bit_index_next;
 
     // Internal register holding data being transmitted
     logic [7:0] tx_data;
+    logic [7:0] tx_data_next;
+
+    logic ready_next; 
 
     /**
      * @brief FSM logic to transmit UART data serially.
@@ -70,34 +75,13 @@ module uart_tx #(
      * based on the configured baud rate. The `ready` signal indicates when the module
      * is ready to send new data.
      */
-    always_ff @(posedge clk or posedge reset) begin
-        if (reset) begin
-            state     <= IDLE;
-            clk_count <= 0;
-            bit_index <= 0;
-            ready     <= 1;
-            tx_data   <= 0;
-        end else begin
-            state     <= state_next;
-
-            clk_count <= (state == IDLE)      ? 0 :
-                         (state == START_BIT) ? ((clk_count < CLKS_PER_BIT - 1) ? clk_count + 1 : 0) :
-                         (state == DATA_BITS) ? ((clk_count < CLKS_PER_BIT - 1) ? clk_count + 1 : 0) :
-                         (state == STOP_BIT)  ? ((clk_count < CLKS_PER_BIT - 1) ? clk_count + 1 : 0) :
-                         /* CLEANUP */           0;
-
-            bit_index <= (state == IDLE)      ? 0 :
-                         (state == START_BIT) ? 0 :
-                         (state == DATA_BITS) ? ((clk_count < CLKS_PER_BIT - 1) ? bit_index :
-                                                (bit_index < 7) ? bit_index + 1 : bit_index) :
-                         (state == STOP_BIT)  ? bit_index :
-                         /* CLEANUP */           0;
-
-            ready     <= (state == IDLE)      ? (send ? 0 : 1) :
-                         (state == CLEANUP)   ? 1 : 0;
-
-            tx_data   <= (state == IDLE && send) ? data : tx_data;
-        end
+    always_ff @(posedge clk) begin
+        state <= (~reset & state_next) | (reset & IDLE);
+        clk_count <= (~reset & clk_count_next) | (reset & 0);
+        bit_index <= (~reset & bit_index_next) | (reset & 0);
+        tx_data <= (~reset & tx_data_next) | (reset & 0);
+        ready <= (~reset & ready_next) | (reset & 1);
+        
     end
 /*
     assign state_next = (state == IDLE)      ? (send ? START_BIT : IDLE) :
@@ -117,9 +101,33 @@ module uart_tx #(
 
 
 
-    assign tx = (state == START_BIT)  ? 1'b0 :
-         (state == DATA_BITS)  ? tx_data[bit_index] :
-                    1'b1;
+
+    assign clk_count_next = 
+        ({13{~state[2] & ~state[1] & ~state[0]}} & 13'd0) | // IDLE
+        ({13{~state[2] & ~state[1] & state[0] & clk_countCMPCLKS_PER_BIT_M_1}} & (clk_count + 1)) | // START_BIT counting
+        ({13{~state[2] & ~state[1] & state[0] & ~clk_countCMPCLKS_PER_BIT_M_1}} & 13'd0) | // START_BIT reset
+        ({13{~state[2] & state[1] & ~state[0] & clk_countCMPCLKS_PER_BIT_M_1}} & (clk_count + 1)) | // DATA_BITS counting
+        ({13{~state[2] & state[1] & ~state[0] & ~clk_countCMPCLKS_PER_BIT_M_1}} & 13'd0) | // DATA_BITS reset
+        ({13{~state[2] & state[1] & state[0] & clk_countCMPCLKS_PER_BIT_M_1}} & (clk_count + 1)) | // STOP_BIT counting
+        ({13{~state[2] & state[1] & state[0] & ~clk_countCMPCLKS_PER_BIT_M_1}} & 13'd0); // STOP_BIT reset
+
+
+    assign bit_index_next = ({3{(~state[2] & state[1] & ~state[0] & ~clk_countCMPCLKS_PER_BIT_M_1 & bit_indexCMP7)}} & (bit_index + 1)) |
+                            ({3{(~state[2] & state[1] & ~state[0] & clk_countCMPCLKS_PER_BIT_M_1)}} & bit_index) |
+                            ({3{(~state[2] & state[1] & ~state[0] & ~clk_countCMPCLKS_PER_BIT_M_1 & ~bit_indexCMP7)}} & bit_index);
+        
+
+
+    assign ready_next = (~state[2] & ~state[1] & ~state[0] & ~send) | 
+                        (state[2] & ~state[1] & ~state[0]);         
+
+    assign tx_data_next = ({8{(~state[2] & ~state[1] & ~state[0] & send)}} & data) | ({8{(~(~state[2] & ~state[1] & ~state[0] & send))}} & tx_data);  
+    
+     
+    assign tx = 
+        ((~state[2]) & state[1] & ~state[0])        & tx_data[bit_index] | 
+        ((~state[2]) & ~state[1] & state[0])        & 1'b0               | 
+        ~((~state[2] & state[1] & ~state[0]) | (~state[2] & ~state[1] & state[0])); 
 
 
 endmodule

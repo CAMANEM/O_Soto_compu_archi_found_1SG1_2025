@@ -42,7 +42,6 @@ module uartController (
 
     // compare
     logic rx_dataCMP15;
-    logic reset;
     logic [7:0] isReady_rx_tx;
 
         /**
@@ -89,6 +88,8 @@ module uartController (
         .send(tx_send),
         .ready(tx_ready)
     );
+    
+    assign isReady_rx_tx = ({8{state[1] & state[0] & rx_ready & tx_ready}});
 
     assign rx_dataCMP15 = ~| (rx_data ^ 8'd15);
 
@@ -101,35 +102,41 @@ module uartController (
     assign state_next[1] = (~state[1]&state[0]&tx_ready)|(state[1]&~state[0]&~tx_ready)|(state[1]&~state[0]&tx_ready)|(state[1]&state[0]);
     assign state_next[0] = (~state[1]&~state[0]&tx_ready&rx_ready&rx_dataCMP15)|(~state[1]&state[0]&~tx_ready)|(state[1]&~state[0]&~tx_ready)|(state[1]&state[0]);
 
-    assign isReady_rx_tx = ({8{(~|(state ^ WAIT_COMMAND)) & rx_ready & tx_ready}});
 
     assign tx_data_next = (isReady_rx_tx & rx_data) | (~isReady_rx_tx & tx_data);
     
     //assign data_next = ((~|(state ^ DONE)) & data) | (~(~|(state ^ DONE)) & rx_data);
 
-    assign tx_send_next = (~state[1] & state[0] & tx_ready) | 
-                          (state[1] & state[0] & rx_ready & tx_ready);
+    // 3:1 mux for tx_send_next, prioritizing reset (active-low)
+    assign tx_send_next = (rst) |
+                         (~rst & ~state[1] & state[0] & tx_ready) |
+                         (~rst & state[1] & state[0] & rx_ready & tx_ready);
     
-    always_ff @(posedge clk) begin
-        reset <= rst;
-    end
 
     /**
      * Main FSM logic for UART handshake and command reception
      */
     always_ff @(posedge clk or posedge rst) begin
-        //state <= (~rst & state_next) | (rst & IDLE);
+        /*
+        // the following comented code need to remove the rst signal
+        state <= (~rst & state_next) | (rst & IDLE);
+        tx_send <= (~rst & tx_send_next) | (rst & 1'b0);
+        tx_data <= (~rst & tx_data_next) | (rst & 8'b0);
+        */
+        // the following comented code make conection with arduino after compiled
+        // posedge clk or posedge rst
         if (rst) begin
             state   <= IDLE;
             tx_send <= 0;
             tx_data <= 8'd14; // ASCII 'K'
-            // display_data <= 8'h00;
+            
         end else begin
-            // Default assignments
+            
             tx_data <= tx_data_next;
             tx_send <= tx_send_next;
             state <= state_next;
         end
+        
     end
 
     // Assign the last received command to the output
