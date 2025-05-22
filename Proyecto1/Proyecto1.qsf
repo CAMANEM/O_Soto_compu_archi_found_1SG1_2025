@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSXFC6D6F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY Proyecto1
+set_global_assignment -name TOP_LEVEL_ENTITY main_Top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:02:25  MAY 09, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
@@ -52,3 +52,25 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name SYSTEMVERILOG_FILE uart_rx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE uart_tx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE uartController.sv
+set_global_assignment -name SYSTEMVERILOG_FILE main_Top.sv
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AB12 -to tx_pin
+set_location_assignment PIN_AA12 -to rx_pin
+set_location_assignment PIN_AA30 -to rst
+set_location_assignment PIN_AF14 -to clk
+set_location_assignment PIN_AA24 -to leds[0]
+set_location_assignment PIN_AB23 -to leds[1]
+set_location_assignment PIN_AC23 -to leds[2]
+set_location_assignment PIN_AD24 -to leds[3]
+set_global_assignment -name SYSTEMVERILOG_FILE leds_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2x1_16bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2to1_1bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2to1_param.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux3to1_1bit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux3to1_param.sv
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
