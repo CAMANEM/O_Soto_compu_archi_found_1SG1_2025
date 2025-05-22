@@ -10,8 +10,8 @@ leds[3] << uartController:uart_controller.data_in
 
 
 |main_Top|uartController:uart_controller
-clk => clk.IN2
-rst => rst.IN2
+clk => clk.IN1
+rst => rst.IN1
 rx_pin => rx_pin.IN1
 tx_pin <= uart_tx:uart_tx_inst.tx
 data_in[0] <= uart_rx:uart_rx_inst.data

@@ -32,8 +32,8 @@ module uartController (
     // Internal UART communication signals
     logic [7:0] rx_data;            ///< Data received from UART
     logic rx_ready;                 ///< High when a new byte has been received
-    logic [7:0] tx_data;            ///< Data to transmit over UART
-    logic [7:0] tx_data_next;       ///< Next state for tx_data
+    logic [7:0] tx_data = 8'd14;            ///< Data to transmit over UART
+    logic [7:0] tx_data_next = 8'd14;       ///< Next state for tx_data
     logic tx_ready;                 ///< High when ready to send
     logic tx_send;                  ///< Trigger signal to send a byte
     logic tx_send_next;           ///< Next state for tx_send
@@ -103,8 +103,8 @@ module uartController (
     assign state_next[0] = (~state[1]&~state[0]&tx_ready&rx_ready&rx_dataCMP15)|(~state[1]&state[0]&~tx_ready)|(state[1]&~state[0]&~tx_ready)|(state[1]&state[0]);
 
 
-    assign tx_data_next = (isReady_rx_tx & rx_data) | (~isReady_rx_tx & tx_data);
-    
+    assign tx_data_next = ({8{rst}} & 8'd14) | (({8{~rst}} & isReady_rx_tx) & rx_data) | (({8{~rst}} & ~isReady_rx_tx) & tx_data);
+
     //assign data_next = ((~|(state ^ DONE)) & data) | (~(~|(state ^ DONE)) & rx_data);
 
     // 3:1 mux for tx_send_next, prioritizing reset (active-low)
@@ -113,33 +113,38 @@ module uartController (
                          (~rst & state[1] & state[0] & rx_ready & tx_ready);
     
 
+    
+
+    // Assign the last received command to the output
+    assign data_in = rx_data[4:0];
+
     /**
      * Main FSM logic for UART handshake and command reception
      */
-    always_ff @(posedge clk or posedge rst) begin
+    always_ff @(posedge clk) begin
+            state <= ({2{~rst}} & state_next) | (rst & IDLE);
+            tx_send <= (~rst & tx_send_next) | (rst & 0);
+            tx_data <= ({8{~rst}} & tx_data_next) | ({8{rst}} & 8'd14);
         /*
+            state <= ({2{~rst}} & state_next) | (rst & IDLE);
+            tx_data <= ({8{~rst}} & tx_data_next) | (rst & 8'd14);
+        
         // the following comented code need to remove the rst signal
-        state <= (~rst & state_next) | (rst & IDLE);
-        tx_send <= (~rst & tx_send_next) | (rst & 1'b0);
-        tx_data <= (~rst & tx_data_next) | (rst & 8'b0);
-        */
+
         // the following comented code make conection with arduino after compiled
         // posedge clk or posedge rst
         if (rst) begin
-            state   <= IDLE;
-            tx_send <= 0;
+            //state   <= IDLE;
+            //tx_send <= 0;
             tx_data <= 8'd14; // ASCII 'K'
             
         end else begin
             
             tx_data <= tx_data_next;
-            tx_send <= tx_send_next;
-            state <= state_next;
+            //tx_send <= tx_send_next;
+            //state <= state_next;
         end
-        
+        */
     end
-
-    // Assign the last received command to the output
-    assign data_in = rx_data[4:0];
 
 endmodule

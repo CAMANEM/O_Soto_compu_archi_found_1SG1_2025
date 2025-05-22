@@ -1,5 +1,5 @@
 Flow report for Proyecto1
-Thu May 22 02:38:26 2025
+Thu May 22 03:43:09 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Thu May 22 02:38:26 2025       ;
+; Flow Status                     ; Successful - Thu May 22 03:43:09 2025       ;
 ; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                   ; Proyecto1                                   ;
 ; Top-level Entity Name           ; main_Top                                    ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSXFC6D6F31C6                              ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 73 / 41,910 ( < 1 % )                       ;
-; Total registers                 ; 86                                          ;
+; Logic utilization (in ALMs)     ; 76 / 41,910 ( < 1 % )                       ;
+; Total registers                 ; 83                                          ;
 ; Total pins                      ; 8 / 499 ( 2 % )                             ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 5,662,720 ( 0 % )                       ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/22/2025 02:37:25 ;
+; Start date & time ; 05/22/2025 03:42:09 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Proyecto1           ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 247207023016729.174790304513800        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 247207023016729.174790692900852        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -100,12 +100,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4818 MB             ; 00:00:18                           ;
-; Fitter               ; 00:00:34     ; 1.0                     ; 6563 MB             ; 00:00:54                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4839 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:06     ; 1.1                     ; 5145 MB             ; 00:00:05                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4722 MB             ; 00:00:01                           ;
-; Total                ; 00:00:57     ; --                      ; --                  ; 00:01:24                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4815 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:34     ; 1.0                     ; 6562 MB             ; 00:00:54                           ;
+; Assembler            ; 00:00:06     ; 1.0                     ; 4838 MB             ; 00:00:06                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.1                     ; 5143 MB             ; 00:00:05                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4723 MB             ; 00:00:01                           ;
+; Total                ; 00:00:55     ; --                      ; --                  ; 00:01:23                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
