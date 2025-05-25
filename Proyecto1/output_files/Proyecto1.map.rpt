@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Proyecto1
-Thu May 22 03:42:18 2025
+Sun May 25 14:26:19 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -47,14 +47,14 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 22 03:42:18 2025       ;
+; Analysis & Synthesis Status     ; Successful - Sun May 25 14:26:19 2025       ;
 ; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                   ; Proyecto1                                   ;
 ; Top-level Entity Name           ; main_Top                                    ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 76                                          ;
-; Total pins                      ; 8                                           ;
+; Total registers                 ; 80                                          ;
+; Total pins                      ; 13                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -180,6 +180,7 @@ https://fpgasoftware.intel.com/eula.
 ; uart_tx.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_tx.sv        ;         ;
 ; uartController.sv                ; yes             ; User SystemVerilog HDL File  ; C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uartController.sv ;         ;
 ; main_Top.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/main_Top.sv       ;         ;
+; pwm.sv                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/pwm.sv            ;         ;
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
 
 
@@ -188,25 +189,25 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 88        ;
+; Estimate of Logic utilization (ALMs needed) ; 93        ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 127       ;
+; Combinational ALUT usage for logic          ; 137       ;
 ;     -- 7 input functions                    ; 5         ;
 ;     -- 6 input functions                    ; 42        ;
 ;     -- 5 input functions                    ; 13        ;
-;     -- 4 input functions                    ; 13        ;
-;     -- <=3 input functions                  ; 54        ;
+;     -- 4 input functions                    ; 15        ;
+;     -- <=3 input functions                  ; 62        ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 76        ;
+; Dedicated logic registers                   ; 80        ;
 ;                                             ;           ;
-; I/O pins                                    ; 8         ;
+; I/O pins                                    ; 13        ;
 ;                                             ;           ;
 ; Total DSP Blocks                            ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 76        ;
-; Total fan-out                               ; 728       ;
-; Average fan-out                             ; 3.32      ;
+; Maximum fan-out                             ; 80        ;
+; Total fan-out                               ; 775       ;
+; Average fan-out                             ; 3.19      ;
 +---------------------------------------------+-----------+
 
 
@@ -215,7 +216,8 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
 ; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Entity Name    ; Library Name ;
 +-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------+----------------+--------------+
-; |main_Top                           ; 127 (0)             ; 76 (0)                    ; 0                 ; 0          ; 8    ; 0            ; |main_Top                                                     ; main_Top       ; work         ;
+; |main_Top                           ; 137 (0)             ; 80 (0)                    ; 0                 ; 0          ; 13   ; 0            ; |main_Top                                                     ; main_Top       ; work         ;
+;    |pwm:pwm_inst|                   ; 10 (10)             ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |main_Top|pwm:pwm_inst                                        ; pwm            ; work         ;
 ;    |uartController:uart_controller| ; 127 (15)            ; 76 (11)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller                      ; uartController ; work         ;
 ;       |uart_rx:uart_rx_inst|        ; 71 (71)             ; 37 (37)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_rx:uart_rx_inst ; uart_rx        ; work         ;
 ;       |uart_tx:uart_tx_inst|        ; 41 (41)             ; 28 (28)                   ; 0                 ; 0          ; 0    ; 0            ; |main_Top|uartController:uart_controller|uart_tx:uart_tx_inst ; uart_tx        ; work         ;
@@ -228,8 +230,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 76    ;
-; Number of registers using Synchronous Clear  ; 27    ;
+; Total registers                              ; 80    ;
+; Number of registers using Synchronous Clear  ; 31    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -286,27 +288,31 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 76                          ;
+; arriav_ff             ; 80                          ;
 ;     ENA               ; 17                          ;
-;     SCLR              ; 27                          ;
+;     SCLR              ; 31                          ;
 ;     plain             ; 32                          ;
-; arriav_lcell_comb     ; 127                         ;
+; arriav_lcell_comb     ; 137                         ;
 ;     arith             ; 24                          ;
 ;         1 data inputs ; 22                          ;
 ;         2 data inputs ; 2                           ;
 ;     extend            ; 5                           ;
 ;         7 data inputs ; 5                           ;
-;     normal            ; 98                          ;
+;     normal            ; 103                         ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 15                          ;
-;         3 data inputs ; 11                          ;
-;         4 data inputs ; 13                          ;
+;         2 data inputs ; 17                          ;
+;         3 data inputs ; 12                          ;
+;         4 data inputs ; 15                          ;
 ;         5 data inputs ; 13                          ;
 ;         6 data inputs ; 42                          ;
-; boundary_port         ; 8                           ;
+;     shared            ; 5                           ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 2                           ;
+; boundary_port         ; 13                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.10                        ;
-; Average LUT depth     ; 2.28                        ;
+; Average LUT depth     ; 2.24                        ;
 +-----------------------+-----------------------------+
 
 
@@ -325,7 +331,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu May 22 03:42:08 2025
+    Info: Processing started: Sun May 25 14:26:11 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Proyecto1 -c Proyecto1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -349,8 +355,12 @@ Info (12021): Found 1 design units, including 1 entities, in source file mux3to1
     Info (12023): Found entity 1: mux3to1_1bit File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/mux3to1_1bit.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux3to1_param.sv
     Info (12023): Found entity 1: mux3to1_param File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/mux3to1_param.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file pwm.sv
+    Info (12023): Found entity 1: pwm File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/pwm.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file tb_pwm.sv
+    Info (12023): Found entity 1: tb_pwm File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/tb_pwm.sv Line: 1
 Info (12127): Elaborating entity "main_Top" for the top level hierarchy
-Info (12128): Elaborating entity "uartController" for hierarchy "uartController:uart_controller" File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/main_Top.sv Line: 15
+Info (12128): Elaborating entity "uartController" for hierarchy "uartController:uart_controller" File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/main_Top.sv Line: 17
 Warning (10230): Verilog HDL assignment warning at uartController.sv(126): truncated value with size 32 to match size of target (1) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uartController.sv Line: 126
 Info (12128): Elaborating entity "uart_rx" for hierarchy "uartController:uart_controller|uart_rx:uart_rx_inst" File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uartController.sv Line: 74
 Warning (10230): Verilog HDL assignment warning at uart_rx.sv(83): truncated value with size 32 to match size of target (13) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_rx.sv Line: 83
@@ -363,18 +373,20 @@ Warning (10230): Verilog HDL assignment warning at uart_tx.sv(82): truncated val
 Warning (10230): Verilog HDL assignment warning at uart_tx.sv(83): truncated value with size 32 to match size of target (1) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_tx.sv Line: 83
 Warning (10230): Verilog HDL assignment warning at uart_tx.sv(105): truncated value with size 32 to match size of target (13) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_tx.sv Line: 105
 Warning (10230): Verilog HDL assignment warning at uart_tx.sv(115): truncated value with size 32 to match size of target (3) File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/uart_tx.sv Line: 115
+Info (12128): Elaborating entity "pwm" for hierarchy "pwm:pwm_inst" File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/main_Top.sv Line: 24
+Warning (10036): Verilog HDL or VHDL warning at pwm.sv(10): object "diff" assigned a value but never read File: C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/pwm.sv Line: 10
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 148 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 140 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
-    Info: Peak virtual memory: 4815 megabytes
-    Info: Processing ended: Thu May 22 03:42:18 2025
-    Info: Elapsed time: 00:00:10
+Info (21057): Implemented 163 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
+    Info (21059): Implemented 6 output pins
+    Info (21061): Implemented 150 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 13 warnings
+    Info: Peak virtual memory: 4818 megabytes
+    Info: Processing ended: Sun May 25 14:26:19 2025
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:17
 
 

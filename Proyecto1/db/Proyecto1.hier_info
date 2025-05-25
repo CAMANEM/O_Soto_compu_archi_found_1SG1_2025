@@ -1,12 +1,17 @@
 |main_Top
-clk => clk.IN1
-rst => rst.IN1
+clk => clk.IN2
+rst => rst.IN2
+duty[0] => duty[0].IN1
+duty[1] => duty[1].IN1
+duty[2] => duty[2].IN1
+duty[3] => duty[3].IN1
 rx_pin => rx_pin.IN1
-tx_pin << uartController:uart_controller.tx_pin
-leds[0] << uartController:uart_controller.data_in
-leds[1] << uartController:uart_controller.data_in
-leds[2] << uartController:uart_controller.data_in
-leds[3] << uartController:uart_controller.data_in
+tx_pin <= uartController:uart_controller.tx_pin
+leds[0] <= uartController:uart_controller.data_in
+leds[1] <= uartController:uart_controller.data_in
+leds[2] <= uartController:uart_controller.data_in
+leds[3] <= uartController:uart_controller.data_in
+pwm_out <= pwm:pwm_inst.pwm_out
 
 
 |main_Top|uartController:uart_controller
@@ -130,5 +135,25 @@ send => state_next.IN1
 send => ready_next.IN1
 tx <= tx.DB_MAX_OUTPUT_PORT_TYPE
 ready <= ready~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main_Top|pwm:pwm_inst
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+rst => mux_out[0].IN1
+rst => mux_out[1].IN1
+rst => mux_out[2].IN1
+rst => mux_out[3].IN1
+duty[0] => duty_eff[0].IN1
+duty[0] => WideNor0.IN0
+duty[1] => WideNor0.IN1
+duty[1] => duty_eff[1].IN1
+duty[2] => WideNor0.IN2
+duty[2] => duty_eff.IN1
+duty[3] => WideNor0.IN3
+duty[3] => duty_eff[3].IN1
+pwm_out <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
