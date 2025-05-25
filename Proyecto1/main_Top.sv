@@ -1,9 +1,11 @@
 module main_Top (
 	input logic clk,
 	input logic rst,
+	input  logic [3:0] duty,        // switches
 	input  logic rx_pin,           // Pin conectado al TX del Arduino
 	output logic tx_pin,
-    output logic [3:0] leds 
+    output logic [3:0] leds,
+	output logic pwm_out 	  	   // Motor
 );
 
 uartController uart_controller (
@@ -13,5 +15,12 @@ uartController uart_controller (
 		.tx_pin(tx_pin),
         .data_in(leds)
 	);
+
+pwm pwm_inst  (
+    .clk(clk),
+    .rst(rst),
+    .duty(duty),        
+    .pwm_out(pwm_out)
+);
 
 endmodule

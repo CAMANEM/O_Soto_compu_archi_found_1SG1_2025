@@ -1,4 +1,143 @@
-|pwm
+|main_Top
+clk => clk.IN2
+rst => rst.IN2
+duty[0] => duty[0].IN1
+duty[1] => duty[1].IN1
+duty[2] => duty[2].IN1
+duty[3] => duty[3].IN1
+rx_pin => rx_pin.IN1
+tx_pin <= uartController:uart_controller.tx_pin
+leds[0] <= uartController:uart_controller.data_in
+leds[1] <= uartController:uart_controller.data_in
+leds[2] <= uartController:uart_controller.data_in
+leds[3] <= uartController:uart_controller.data_in
+pwm_out <= pwm:pwm_inst.pwm_out
+
+
+|main_Top|uartController:uart_controller
+clk => clk.IN1
+rst => rst.IN1
+rx_pin => rx_pin.IN1
+tx_pin <= uart_tx:uart_tx_inst.tx
+data_in[0] <= uart_rx:uart_rx_inst.data
+data_in[1] <= uart_rx:uart_rx_inst.data
+data_in[2] <= uart_rx:uart_rx_inst.data
+data_in[3] <= uart_rx:uart_rx_inst.data
+data_in[4] <= uart_rx:uart_rx_inst.data
+
+
+|main_Top|uartController:uart_controller|uart_rx:uart_rx_inst
+clk => ready~reg0.CLK
+clk => data[0]~reg0.CLK
+clk => data[1]~reg0.CLK
+clk => data[2]~reg0.CLK
+clk => data[3]~reg0.CLK
+clk => data[4]~reg0.CLK
+clk => data[5]~reg0.CLK
+clk => data[6]~reg0.CLK
+clk => data[7]~reg0.CLK
+clk => rx_data[0].CLK
+clk => rx_data[1].CLK
+clk => rx_data[2].CLK
+clk => rx_data[3].CLK
+clk => rx_data[4].CLK
+clk => rx_data[5].CLK
+clk => rx_data[6].CLK
+clk => rx_data[7].CLK
+clk => bit_index[0].CLK
+clk => bit_index[1].CLK
+clk => bit_index[2].CLK
+clk => clk_count[0].CLK
+clk => clk_count[1].CLK
+clk => clk_count[2].CLK
+clk => clk_count[3].CLK
+clk => clk_count[4].CLK
+clk => clk_count[5].CLK
+clk => clk_count[6].CLK
+clk => clk_count[7].CLK
+clk => clk_count[8].CLK
+clk => clk_count[9].CLK
+clk => clk_count[10].CLK
+clk => clk_count[11].CLK
+clk => clk_count[12].CLK
+clk => state[0].CLK
+clk => state[1].CLK
+clk => state[2].CLK
+clk => rx_sync.CLK
+reset => data.IN1
+reset => ready.IN1
+reset => clk_count_next.IN1
+reset => clk_count_next.IN1
+reset => clk_count.IN1
+reset => bit_index_next.IN1
+reset => bit_index_next.IN1
+reset => bit_index.IN1
+reset => rx_data_next.IN1
+reset => rx_data_next.IN1
+reset => rx_data.IN1
+reset => state.IN1
+rx => rx_sync.DATAIN
+data[0] <= data[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[1] <= data[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[2] <= data[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[3] <= data[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[4] <= data[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[5] <= data[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[6] <= data[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[7] <= data[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ready <= ready~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main_Top|uartController:uart_controller|uart_tx:uart_tx_inst
+clk => ready~reg0.CLK
+clk => tx_data[0].CLK
+clk => tx_data[1].CLK
+clk => tx_data[2].CLK
+clk => tx_data[3].CLK
+clk => tx_data[4].CLK
+clk => tx_data[5].CLK
+clk => tx_data[6].CLK
+clk => tx_data[7].CLK
+clk => bit_index[0].CLK
+clk => bit_index[1].CLK
+clk => bit_index[2].CLK
+clk => clk_count[0].CLK
+clk => clk_count[1].CLK
+clk => clk_count[2].CLK
+clk => clk_count[3].CLK
+clk => clk_count[4].CLK
+clk => clk_count[5].CLK
+clk => clk_count[6].CLK
+clk => clk_count[7].CLK
+clk => clk_count[8].CLK
+clk => clk_count[9].CLK
+clk => clk_count[10].CLK
+clk => clk_count[11].CLK
+clk => clk_count[12].CLK
+clk => state[0].CLK
+clk => state[1].CLK
+clk => state[2].CLK
+reset => ready.IN1
+reset => ready.IN1
+reset => state.IN1
+reset => clk_count.IN1
+reset => bit_index.IN1
+reset => tx_data.IN1
+data[0] => tx_data_next.IN1
+data[1] => tx_data_next.IN1
+data[2] => tx_data_next.IN1
+data[3] => tx_data_next.IN1
+data[4] => tx_data_next.IN1
+data[5] => tx_data_next.IN1
+data[6] => tx_data_next.IN1
+data[7] => tx_data_next.IN1
+send => state_next.IN1
+send => ready_next.IN1
+tx <= tx.DB_MAX_OUTPUT_PORT_TYPE
+ready <= ready~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|main_Top|pwm:pwm_inst
 clk => counter[0].CLK
 clk => counter[1].CLK
 clk => counter[2].CLK
@@ -7,10 +146,14 @@ rst => mux_out[0].IN1
 rst => mux_out[1].IN1
 rst => mux_out[2].IN1
 rst => mux_out[3].IN1
-duty[0] => Add0.IN4
-duty[1] => Add0.IN3
-duty[2] => Add0.IN2
-duty[3] => Add0.IN1
+duty[0] => duty_eff[0].IN1
+duty[0] => WideNor0.IN0
+duty[1] => WideNor0.IN1
+duty[1] => duty_eff[1].IN1
+duty[2] => WideNor0.IN2
+duty[2] => duty_eff.IN1
+duty[3] => WideNor0.IN3
+duty[3] => duty_eff[3].IN1
 pwm_out <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 

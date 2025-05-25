@@ -1,7 +1,7 @@
 module pwm (
     input  logic       clk,
     input  logic       rst,
-    input  logic [3:0] duty,    // velocudades
+    input  logic [3:0] duty,        
     output logic       pwm_out
 );
 
@@ -10,12 +10,15 @@ module pwm (
     logic [3:0] diff;
     logic       borrow;
     logic [3:0] mux_out;
+    logic [3:0] duty_eff;           
 
-    // Comparador counter < duty ... borrow = 1
-    assign {borrow, diff} = {1'b0, counter} - {1'b0, duty};
+
+    assign duty_eff = ({4{(~|(duty ^ 4'd1))}} & 4'd4) | ({4{~(~|(duty ^ 4'd1))}} & duty);
+
+    assign {borrow, diff} = {1'b0, counter} - {1'b0, duty_eff};
     assign pwm_out = borrow;
 
-    // Contador secuencial
+ 
     assign counter_next = counter + 4'd1;
     assign mux_out = ({4{rst}} & 4'd0) | ({4{~rst}} & counter_next);
 

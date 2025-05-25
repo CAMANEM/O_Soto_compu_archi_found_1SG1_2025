@@ -24,6 +24,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "pwm_out",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				},
@@ -32,7 +36,23 @@
 					"strict" : false
 				},
 				{
+					"name" : "duty[3]",
+					"strict" : false
+				},
+				{
 					"name" : "rx_pin",
+					"strict" : false
+				},
+				{
+					"name" : "duty[2]",
+					"strict" : false
+				},
+				{
+					"name" : "duty[0]",
+					"strict" : false
+				},
+				{
+					"name" : "duty[1]",
 					"strict" : false
 				}
 			]
