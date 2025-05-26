@@ -25,9 +25,9 @@ module sub_4b (
     assign Y = S;
 
     // Flags:
-    assign F[3] = (S == 4'b0000);         // Zero flag
-    assign F[2] = S[3];                   // Negative flag (MSB del resultado)
-    assign F[1] = Cout;                   // Carry flag (borrow en resta)
-    assign F[0] = (A[3] != B[3]) && (S[3] != A[3]); // Overflow flag
+    assign F[3] = ~Y[3] & ~Y[2] & ~Y[1] & ~Y[0];  // Zero flag
+    assign F[2] = Y[3];                           // Negative flag (MSB del resultado)
+    assign F[1] = ~Cout;                          // Carry flag (borrow en resta)
+    assign F[0] = (A[3] ^ B[3]) & (Y[3] ^ A[3]);  // Overflow flag
 
 endmodule

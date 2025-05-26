@@ -64,22 +64,16 @@ module mult_4b (
     );
 
     // Cálculo de las flags
-    always_comb begin
-        // Flag Zero (Z)
-        Z = (P == 8'b00000000);
 
-        // Flag Negative (N)
-        N = P[7];  // El bit más significativo del producto (P[7])
+        
+        assign F[3] = ~P[3] & ~P[2] & ~P[1] & ~P[0]; // Flag Zero (Z)
+		  
+        assign F[2] = P[3];  // Flag Negative (N)
+		  
+        assign F[1] = P[4] | P[5] | P[6] | P[7];  // Flag Carry (C)
+		  
+        assign F[0] = (A[3] ^ B[3]) & (P[7] ^ (A[3] ^ B[3])); // Flag Overflow (V)
 
-        // Flag Carry (C)
-        C = (temp3[7] != P[7]);  // Si el bit de carry de la última suma no coincide con el bit más significativo del resultado
-
-        // Flag Overflow (V)
-        // Overflow en una multiplicación de 4 bits con signo ocurre si el signo del resultado no es el esperado
-        V = (A[3] ^ B[3]) & (P[7] ^ A[3]);
-
-        // Asignación de las flags a F
-        F = {Z, N, C, V};  // F = {Z, N, C, V}
-    end
+   
 
 endmodule

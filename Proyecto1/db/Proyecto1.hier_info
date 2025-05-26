@@ -191,7 +191,7 @@ Y[3] <= comb.DB_MAX_OUTPUT_PORT_TYPE
 F[0] <= <GND>
 F[1] <= <GND>
 F[2] <= comb.DB_MAX_OUTPUT_PORT_TYPE
-F[3] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+F[3] <= F.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |main_Top|Alu_4b:alu_4bits|xor_4b:u_or
@@ -210,7 +210,7 @@ Y[3] <= comb.DB_MAX_OUTPUT_PORT_TYPE
 F[0] <= <GND>
 F[1] <= <GND>
 F[2] <= comb.DB_MAX_OUTPUT_PORT_TYPE
-F[3] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+F[3] <= F.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |main_Top|Alu_4b:alu_4bits|sub_4b:u_sub
@@ -231,7 +231,7 @@ Cout <= full_adder:FA3.port4
 F[0] <= F.DB_MAX_OUTPUT_PORT_TYPE
 F[1] <= full_adder:FA3.port4
 F[2] <= full_adder:FA3.port3
-F[3] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+F[3] <= F.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |main_Top|Alu_4b:alu_4bits|sub_4b:u_sub|full_adder:FA0
@@ -295,8 +295,7 @@ A[3] => comb.IN0
 A[3] => comb.IN0
 A[3] => comb.IN0
 A[3] => comb.IN0
-A[3] => V.IN0
-A[3] => V.IN1
+A[3] => F.IN0
 B[0] => comb.IN1
 B[0] => comb.IN1
 B[0] => comb.IN1
@@ -313,7 +312,7 @@ B[3] => comb.IN1
 B[3] => comb.IN1
 B[3] => comb.IN1
 B[3] => comb.IN1
-B[3] => V.IN1
+B[3] => F.IN1
 P[0] <= ripple_adder:add3.S
 P[1] <= ripple_adder:add3.S
 P[2] <= ripple_adder:add3.S
@@ -322,10 +321,10 @@ P[4] <= ripple_adder:add3.S
 P[5] <= ripple_adder:add3.S
 P[6] <= ripple_adder:add3.S
 P[7] <= ripple_adder:add3.S
-F[0] <= V.DB_MAX_OUTPUT_PORT_TYPE
-F[1] <= C.DB_MAX_OUTPUT_PORT_TYPE
+F[0] <= F.DB_MAX_OUTPUT_PORT_TYPE
+F[1] <= F.DB_MAX_OUTPUT_PORT_TYPE
 F[2] <= ripple_adder:add3.S
-F[3] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+F[3] <= F.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |main_Top|Alu_4b:alu_4bits|mult_4b:u_mult|ripple_adder:add1
