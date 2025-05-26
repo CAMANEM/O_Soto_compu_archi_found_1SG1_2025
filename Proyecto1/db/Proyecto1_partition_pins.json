@@ -4,27 +4,111 @@
 			"name" : "Top",
 			"pins" : [
 				{
+					"name" : "aluResult[0]",
+					"strict" : false
+				},
+				{
+					"name" : "aluResult[1]",
+					"strict" : false
+				},
+				{
+					"name" : "aluResult[2]",
+					"strict" : false
+				},
+				{
+					"name" : "aluResult[3]",
+					"strict" : false
+				},
+				{
 					"name" : "tx_pin",
 					"strict" : false
 				},
 				{
-					"name" : "leds[0]",
+					"name" : "aluNumB[0]",
 					"strict" : false
 				},
 				{
-					"name" : "leds[1]",
+					"name" : "aluNumB[1]",
 					"strict" : false
 				},
 				{
-					"name" : "leds[2]",
+					"name" : "aluNumB[2]",
 					"strict" : false
 				},
 				{
-					"name" : "leds[3]",
+					"name" : "aluNumB[3]",
 					"strict" : false
 				},
 				{
 					"name" : "pwm_out",
+					"strict" : false
+				},
+				{
+					"name" : "aluFlags[0]",
+					"strict" : false
+				},
+				{
+					"name" : "aluFlags[1]",
+					"strict" : false
+				},
+				{
+					"name" : "aluFlags[2]",
+					"strict" : false
+				},
+				{
+					"name" : "aluFlags[3]",
+					"strict" : false
+				},
+				{
+					"name" : "resultDisplay[0]",
+					"strict" : false
+				},
+				{
+					"name" : "resultDisplay[1]",
+					"strict" : false
+				},
+				{
+					"name" : "resultDisplay[2]",
+					"strict" : false
+				},
+				{
+					"name" : "resultDisplay[3]",
+					"strict" : false
+				},
+				{
+					"name" : "resultDisplay[4]",
+					"strict" : false
+				},
+				{
+					"name" : "resultDisplay[5]",
+					"strict" : false
+				},
+				{
+					"name" : "resultDisplay[6]",
+					"strict" : false
+				},
+				{
+					"name" : "aluSel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "aluNumA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "aluNumA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "aluSel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "aluNumA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "aluNumA[3]",
 					"strict" : false
 				},
 				{
@@ -36,23 +120,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "duty[3]",
-					"strict" : false
-				},
-				{
 					"name" : "rx_pin",
-					"strict" : false
-				},
-				{
-					"name" : "duty[2]",
-					"strict" : false
-				},
-				{
-					"name" : "duty[0]",
-					"strict" : false
-				},
-				{
-					"name" : "duty[1]",
 					"strict" : false
 				}
 			]

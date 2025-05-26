@@ -44,7 +44,7 @@ set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:02:25  MAY 09, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name BOARD "Cyclone V SoCKit"
+set_global_assignment -name BOARD "Cyclone V SoC Development Kit"
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
@@ -60,10 +60,6 @@ set_location_assignment PIN_AB12 -to tx_pin
 set_location_assignment PIN_AA12 -to rx_pin
 set_location_assignment PIN_AA30 -to rst
 set_location_assignment PIN_AF14 -to clk
-set_location_assignment PIN_AA24 -to leds[0]
-set_location_assignment PIN_AB23 -to leds[1]
-set_location_assignment PIN_AC23 -to leds[2]
-set_location_assignment PIN_AD24 -to leds[3]
 set_global_assignment -name SYSTEMVERILOG_FILE leds_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mux2x1_16bit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mux2to1_1bit.sv
@@ -82,14 +78,40 @@ set_global_assignment -name EDA_TEST_BENCH_NAME tb_pwm -section_id eda_simulatio
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_pwm
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_pwm -section_id tb_pwm
 set_global_assignment -name EDA_TEST_BENCH_FILE tb_pwm.sv -section_id tb_pwm
-set_location_assignment PIN_AB30 -to duty[0]
-set_location_assignment PIN_Y27 -to duty[1]
-set_location_assignment PIN_AB28 -to duty[2]
-set_location_assignment PIN_AC30 -to duty[3]
 set_location_assignment PIN_AC12 -to pwm_out
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name SYSTEMVERILOG_FILE hex7seg.sv
-set_global_assignment -name SYSTEMVERILOG_FILE encoder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mult_4b.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux4_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ripple_adder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE sub_4b.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Alu_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE xor_4b.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Alu_4b.sv
+set_global_assignment -name SYSTEMVERILOG_FILE and_4b.sv
+set_global_assignment -name SYSTEMVERILOG_FILE full_adder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE hex7seg_tb.sv
+set_location_assignment PIN_AC22 -to aluFlags[3]
+set_location_assignment PIN_AB22 -to aluFlags[2]
+set_location_assignment PIN_AF24 -to aluFlags[1]
+set_location_assignment PIN_AE24 -to aluFlags[0]
+set_location_assignment PIN_AD9 -to aluNumA[3]
+set_location_assignment PIN_AD10 -to aluNumA[2]
+set_location_assignment PIN_AD11 -to aluNumA[1]
+set_location_assignment PIN_AD12 -to aluNumA[0]
+set_location_assignment PIN_AD24 -to aluNumB[3]
+set_location_assignment PIN_AC23 -to aluNumB[2]
+set_location_assignment PIN_AB23 -to aluNumB[1]
+set_location_assignment PIN_AA24 -to aluNumB[0]
+set_location_assignment PIN_AB30 -to aluSel[0]
+set_location_assignment PIN_Y27 -to aluSel[1]
+set_location_assignment PIN_W17 -to resultDisplay[6]
+set_location_assignment PIN_V18 -to resultDisplay[5]
+set_location_assignment PIN_AG17 -to resultDisplay[4]
+set_location_assignment PIN_AG16 -to resultDisplay[3]
+set_location_assignment PIN_AH17 -to resultDisplay[2]
+set_location_assignment PIN_AG18 -to resultDisplay[1]
+set_location_assignment PIN_AH18 -to resultDisplay[0]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
