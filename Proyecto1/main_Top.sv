@@ -4,13 +4,14 @@ module main_Top (
 	input logic [3:0] aluNumA,
 	input logic [1:0] aluSel,
 	input  logic rx_pin,           // Pin conectado al TX del Arduino
-	output  logic [3:0] aluResult,
 	output logic tx_pin,
    output logic [3:0] aluNumB,
 	output logic pwm_out, 	  	   // Motor
 	output logic [3:0] aluFlags,
 	output logic [6:0] resultDisplay
 );
+
+logic [3:0] aluResult;
 
 uartController uart_controller (
 		.clk(clk),

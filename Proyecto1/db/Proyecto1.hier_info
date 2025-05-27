@@ -8,27 +8,23 @@ aluNumA[3] => aluNumA[3].IN1
 aluSel[0] => aluSel[0].IN1
 aluSel[1] => aluSel[1].IN1
 rx_pin => rx_pin.IN1
-aluResult[0] << aluResult[0].DB_MAX_OUTPUT_PORT_TYPE
-aluResult[1] << aluResult[1].DB_MAX_OUTPUT_PORT_TYPE
-aluResult[2] << aluResult[2].DB_MAX_OUTPUT_PORT_TYPE
-aluResult[3] << aluResult[3].DB_MAX_OUTPUT_PORT_TYPE
-tx_pin << uartController:uart_controller.tx_pin
-aluNumB[0] << aluNumB[0].DB_MAX_OUTPUT_PORT_TYPE
-aluNumB[1] << aluNumB[1].DB_MAX_OUTPUT_PORT_TYPE
-aluNumB[2] << aluNumB[2].DB_MAX_OUTPUT_PORT_TYPE
-aluNumB[3] << aluNumB[3].DB_MAX_OUTPUT_PORT_TYPE
-pwm_out << pwm:pwm_inst.pwm_out
-aluFlags[0] << Alu_4b:alu_4bits.flags
-aluFlags[1] << Alu_4b:alu_4bits.flags
-aluFlags[2] << Alu_4b:alu_4bits.flags
-aluFlags[3] << Alu_4b:alu_4bits.flags
-resultDisplay[0] << hex7seg:result_display.segments
-resultDisplay[1] << hex7seg:result_display.segments
-resultDisplay[2] << hex7seg:result_display.segments
-resultDisplay[3] << hex7seg:result_display.segments
-resultDisplay[4] << hex7seg:result_display.segments
-resultDisplay[5] << hex7seg:result_display.segments
-resultDisplay[6] << hex7seg:result_display.segments
+tx_pin <= uartController:uart_controller.tx_pin
+aluNumB[0] <= aluNumB[0].DB_MAX_OUTPUT_PORT_TYPE
+aluNumB[1] <= aluNumB[1].DB_MAX_OUTPUT_PORT_TYPE
+aluNumB[2] <= aluNumB[2].DB_MAX_OUTPUT_PORT_TYPE
+aluNumB[3] <= aluNumB[3].DB_MAX_OUTPUT_PORT_TYPE
+pwm_out <= pwm:pwm_inst.pwm_out
+aluFlags[0] <= Alu_4b:alu_4bits.flags
+aluFlags[1] <= Alu_4b:alu_4bits.flags
+aluFlags[2] <= Alu_4b:alu_4bits.flags
+aluFlags[3] <= Alu_4b:alu_4bits.flags
+resultDisplay[0] <= hex7seg:result_display.segments
+resultDisplay[1] <= hex7seg:result_display.segments
+resultDisplay[2] <= hex7seg:result_display.segments
+resultDisplay[3] <= hex7seg:result_display.segments
+resultDisplay[4] <= hex7seg:result_display.segments
+resultDisplay[5] <= hex7seg:result_display.segments
+resultDisplay[6] <= hex7seg:result_display.segments
 
 
 |main_Top|uartController:uart_controller
