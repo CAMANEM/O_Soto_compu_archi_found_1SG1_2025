@@ -1,0 +1,51 @@
+# Reading pref.tcl
+# do Proyecto1_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1 {C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/pwm.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:00:30 on May 24,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1" C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/pwm.sv 
+# -- Compiling module pwm
+# 
+# Top level modules:
+# 	pwm
+# End time: 20:00:30 on May 24,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -sv -work work +incdir+C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1 {C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/tb_pwm.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:00:30 on May 24,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1" C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/tb_pwm.sv 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 20:00:31 on May 24,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_pwm
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_pwm 
+# Start time: 20:00:31 on May 24,2025
+# Loading sv_std.std
+# Loading work.tb_pwm
+# Loading work.pwm
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Break key hit
+# Break in Module tb_pwm at C:/Users/caman/Documents/Github/O_Soto_compu_archi_found_1SG1_2025/Proyecto1/tb_pwm.sv line 18
+# End time: 20:15:18 on May 24,2025, Elapsed time: 0:14:47
+# Errors: 0, Warnings: 0
